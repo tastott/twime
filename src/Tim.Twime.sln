@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Tutorial", "Tim.Twime.Tutorial\Tim.Twime.Tutorial.fsproj", "{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tim.Twime.ImportExport", "Tim.Twime.ImportExport\Tim.Twime.ImportExport.csproj", "{31B27A51-E467-4C11-812E-6995C8FB5B3B}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Models", "Tim.Twime.Models\Tim.Twime.Models.fsproj", "{41B35659-C79F-4A5B-9F3F-4C77BE9CE595}"
@@ -17,9 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
