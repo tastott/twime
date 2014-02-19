@@ -1,7 +1,8 @@
-﻿module CyclingPhysics
+﻿namespace Tim.Twime.Cycling
+module CyclingPhysics =
+
     open Tim.Twime.Models
     open Tim.Geography.Geography
-    open Tim.Twime.ImportExport
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
 
 

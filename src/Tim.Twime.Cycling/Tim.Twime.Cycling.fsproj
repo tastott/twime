@@ -5,12 +5,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>02d9bdf9-4a92-4cba-9947-b984c1a20c42</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Tim.Twime.Console</RootNamespace>
-    <AssemblyName>Tim.Twime.Console</AssemblyName>
+    <ProjectGuid>bb589fdb-0801-4ffb-80f9-a83aa332f9b3</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Tim.Twime.Cycling</RootNamespace>
+    <AssemblyName>Tim.Twime.Cycling</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>Tim.Twime.Console</Name>
+    <Name>Tim.Twime.Cycling</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,9 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\Tim.Twime.Console.XML</DocumentationFile>
-    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\Debug\Tim.Twime.Cycling.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,17 +29,11 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\Tim.Twime.Console.XML</DocumentationFile>
-    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\Release\Tim.Twime.Cycling.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,24 +41,13 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <Compile Include="Program.fs" />
-    <None Include="packages.config" />
+    <Compile Include="CyclingPhysics.fs" />
+    <Compile Include="RideTransformations.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tim.Geography\Tim.Geography.fsproj">
       <Name>Tim.Geography</Name>
       <Project>{5860b84a-0a44-4689-8ecf-ec03842a8f5a}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Tim.Twime.Cycling\Tim.Twime.Cycling.fsproj">
-      <Name>Tim.Twime.Cycling</Name>
-      <Project>{bb589fdb-0801-4ffb-80f9-a83aa332f9b3}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Tim.Twime.ImportExport\Tim.Twime.ImportExport.csproj">
-      <Name>Tim.Twime.ImportExport</Name>
-      <Project>{31b27a51-e467-4c11-812e-6995c8fb5b3b}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Tim.Twime.Models\Tim.Twime.Models.fsproj">

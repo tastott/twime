@@ -8,8 +8,8 @@ module Program =
     open Tim.Twime.Models
     open Tim.Twime.ImportExport
     open Tim.Geography.Geography
-    open CyclingPhysics
-    open RideTransformations
+    open Tim.Twime.Cycling.CyclingPhysics
+    open Tim.Twime.Cycling.RideTransformations
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
     open Newtonsoft.Json
 

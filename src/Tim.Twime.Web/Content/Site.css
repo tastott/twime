@@ -59,3 +59,10 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+.app-title
+{
+    font-size: 40px;
+    font-family: Britannic;
+    margin: 20px;
+}

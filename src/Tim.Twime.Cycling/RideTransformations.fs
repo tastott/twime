@@ -1,4 +1,6 @@
-﻿module RideTransformations
+﻿namespace Tim.Twime.Cycling.RideTransformations
+
+module RideTransformations =
 
     open Tim.Twime.Models
 

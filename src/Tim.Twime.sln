@@ -9,6 +9,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Geography", "Tim.Geogra
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Console", "Tim.Twime.Console\Tim.Twime.Console.fsproj", "{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tim.Twime.Web", "Tim.Twime.Web\Tim.Twime.Web.csproj", "{B53F2175-B608-4BAC-B09C-21673F2097A8}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Cycling", "Tim.Twime.Cycling\Tim.Twime.Cycling.fsproj", "{BB589FDB-0801-4FFB-80F9-A83AA332F9B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53F2175-B608-4BAC-B09C-21673F2097A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53F2175-B608-4BAC-B09C-21673F2097A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53F2175-B608-4BAC-B09C-21673F2097A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53F2175-B608-4BAC-B09C-21673F2097A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB589FDB-0801-4FFB-80F9-A83AA332F9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB589FDB-0801-4FFB-80F9-A83AA332F9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB589FDB-0801-4FFB-80F9-A83AA332F9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB589FDB-0801-4FFB-80F9-A83AA332F9B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
