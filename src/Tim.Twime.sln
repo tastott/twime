@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Tutorial", "Tim.Twime.Tutorial\Tim.Twime.Tutorial.fsproj", "{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tim.Twime.ImportExport", "Tim.Twime.ImportExport\Tim.Twime.ImportExport.csproj", "{31B27A51-E467-4C11-812E-6995C8FB5B3B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Models", "Tim.Twime.Models\Tim.Twime.Models.fsproj", "{41B35659-C79F-4A5B-9F3F-4C77BE9CE595}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Geography", "Tim.Geography\Tim.Geography.fsproj", "{5860B84A-0A44-4689-8ECF-EC03842A8F5A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Twime.Console", "Tim.Twime.Console\Tim.Twime.Console.fsproj", "{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB5F4C0-6D5D-4971-8EF0-D63C78D98E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B27A51-E467-4C11-812E-6995C8FB5B3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B35659-C79F-4A5B-9F3F-4C77BE9CE595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B35659-C79F-4A5B-9F3F-4C77BE9CE595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B35659-C79F-4A5B-9F3F-4C77BE9CE595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B35659-C79F-4A5B-9F3F-4C77BE9CE595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5860B84A-0A44-4689-8ECF-EC03842A8F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5860B84A-0A44-4689-8ECF-EC03842A8F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5860B84A-0A44-4689-8ECF-EC03842A8F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5860B84A-0A44-4689-8ECF-EC03842A8F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D9BDF9-4A92-4CBA-9947-B984C1A20C42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
