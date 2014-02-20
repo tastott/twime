@@ -12,6 +12,7 @@ module Program =
     open Tim.Twime.Cycling.RideTransformations
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
     open Newtonsoft.Json
+    open Tim.Units.Units
 
         [<EntryPoint>]
         let main argv = 
@@ -25,7 +26,7 @@ module Program =
             let massEx = 70.<kilogram>
             let vWindEx = 20.<mph>
             
-            let legs = analyseWaypoints waypoints massEx 0.<radian> (vWindEx * mpsPerMph)
+            let legs = analyseWaypoints waypoints massEx 0.<radian> (MphToMps vWindEx)
             exporter.ExportAnalysedLegsToCsvFile(legs, @"C:\users\tim\desktop\14-02-2014 PM - unsmoothed.csv")
 
             let maxPower = legs |> Array.maxBy(fun l -> l.PedalPower)
@@ -37,7 +38,7 @@ module Program =
             let totalDuration = legs |> Array.sumBy(fun l -> l.Duration)
 
             let averageSpeed = totalDistance / totalDuration
-            printfn "Distance:%.1fkm\nDuration:%.1fmins\nAverage speed: %.1fkph" (float totalDistance / 1000.) (float totalDuration / 60.) (float (averageSpeed / mpsPerKph))
+            //printfn "Distance:%.1fkm\nDuration:%.1fmins\nAverage speed: %.1fkph" (float totalDistance / 1000.) (float totalDuration / 60.) (float (averageSpeed / mpsPerKph))
 
             printfn "%f" (float legs.[0].Distance)
             let x = System.Console.ReadLine()

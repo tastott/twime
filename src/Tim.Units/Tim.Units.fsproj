@@ -5,12 +5,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>5860b84a-0a44-4689-8ecf-ec03842a8f5a</ProjectGuid>
+    <ProjectGuid>e71e2f5f-3c98-4163-a2eb-c9920bb40af8</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Tim.Geography</RootNamespace>
-    <AssemblyName>Tim.Geography</AssemblyName>
+    <RootNamespace>Tim.Units</RootNamespace>
+    <AssemblyName>Tim.Units</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>Tim.Geography</Name>
+    <Name>Tim.Units</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,7 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Debug\Tim.Geography.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Tim.Units.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +29,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Release\Tim.Geography.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Tim.Units.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -41,14 +41,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Geography.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tim.Units\Tim.Units.fsproj">
-      <Name>Tim.Units</Name>
-      <Project>{e71e2f5f-3c98-4163-a2eb-c9920bb40af8}</Project>
-      <Private>True</Private>
-    </ProjectReference>
+    <Compile Include="Units.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

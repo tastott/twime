@@ -55,6 +55,11 @@
       <Project>{5860b84a-0a44-4689-8ecf-ec03842a8f5a}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Tim.Units\Tim.Units.fsproj">
+      <Name>Tim.Units</Name>
+      <Project>{e71e2f5f-3c98-4163-a2eb-c9920bb40af8}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

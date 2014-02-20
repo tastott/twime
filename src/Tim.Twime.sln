@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tim.Twime.Services", "Tim.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tim.Twime.DependencyInjection", "Tim.Twime.DependencyInjection\Tim.Twime.DependencyInjection.csproj", "{DDE51CC0-33C0-45D4-8373-B5A46DA05A52}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tim.Units", "Tim.Units\Tim.Units.fsproj", "{E71E2F5F-3C98-4163-A2EB-C9920BB40AF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{DDE51CC0-33C0-45D4-8373-B5A46DA05A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE51CC0-33C0-45D4-8373-B5A46DA05A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE51CC0-33C0-45D4-8373-B5A46DA05A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E71E2F5F-3C98-4163-A2EB-C9920BB40AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E71E2F5F-3C98-4163-A2EB-C9920BB40AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E71E2F5F-3C98-4163-A2EB-C9920BB40AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E71E2F5F-3C98-4163-A2EB-C9920BB40AF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

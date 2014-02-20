@@ -6,14 +6,6 @@ module CyclingPhysics =
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
 
 
-    [<Measure>] type kph
-    let mpsPerKph = 1.<meter/(second kph)>/3.6
-    
-    [<Measure>] type mph
-    let mpsPerMph = 8.<meter/(second mph)>/18.
-
-    [<Measure>] type watt = kilogram meter^2 / second ^ 3
-
     type Vector2D<[<Measure>] 'u>(x : float<'u>, y : float<'u>) = 
         /// The length of the vector, computed when the object is constructed
         let length = sqrt (x*x + y*y)

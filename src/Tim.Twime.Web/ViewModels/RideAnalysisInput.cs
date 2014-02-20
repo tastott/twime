@@ -10,5 +10,6 @@ namespace Tim.Twime.Web.ViewModels
         public HttpPostedFileBase File { get; set; }
         public int WindSpeedMph { get; set; }
         public int WindBearingDegrees { get; set; }
+        public int Mass { get; set; }
     }
 }

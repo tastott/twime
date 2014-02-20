@@ -2,12 +2,10 @@
 
 module Geography =
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
+    open Tim.Units.Units
+   
 
-    [<Measure>] type radian
-    [<Measure>] type degree
-
-    let radiansPerDegree = System.Math.PI / 180.<degree/radian>
-
+    
     let EarthRadius = 6371000.<meter>
 
     let EarthDistance (lat1 : float<radian>) (lon1 : float<radian>) (lat2 : float<radian>) (lon2 : float<radian>) =
@@ -16,7 +14,7 @@ module Geography =
         sqrt (x*x + y*y) * EarthRadius
 
     let EarthDistanceDegrees (lat1 : float<degree>) (lon1 : float<degree>) (lat2 : float<degree>) (lon2 : float<degree>) =
-        EarthDistance (radiansPerDegree * lat1) (radiansPerDegree * lon1) (radiansPerDegree * lat2) (radiansPerDegree * lon2)
+        EarthDistance (DegreesToRadians lat1) (DegreesToRadians lon1) (DegreesToRadians lat2) (DegreesToRadians lon2)
 
     let initialBearing (lat1 : float<radian>) (lon1 : float<radian>) (lat2 : float<radian>) (lon2 : float<radian>) =
         let dLon = float(lon2 - lon1)
@@ -25,4 +23,4 @@ module Geography =
         (atan2 y x) * 1.<radian>
 
     let initialBearingFromDegrees (lat1 : float<degree>) (lon1 : float<degree>) (lat2 : float<degree>) (lon2 : float<degree>) =
-        initialBearing (radiansPerDegree * lat1) (radiansPerDegree * lon1) (radiansPerDegree * lat2) (radiansPerDegree * lon2)
+        initialBearing (DegreesToRadians lat1) (DegreesToRadians lon1) (DegreesToRadians lat2) (DegreesToRadians lon2)

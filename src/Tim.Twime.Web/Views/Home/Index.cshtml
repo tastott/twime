@@ -12,9 +12,42 @@
         <div>
             @using(Html.BeginForm("Upload", "Home", FormMethod.Post, new {enctype="multipart/form-data"}))
             {
-                <input type="file" name="Input.File" />
-                <input type="number" name="Input.WindSpeedMph" />
-                <input type="number" name="Input.WindBearingDegrees" />
+                <table>
+                    <tr>
+                        <td>
+                            File:
+                        </td>
+                        <td>
+                            <input type="file" name="Input.File" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Wind speed (mph):
+                        </td>
+                        <td>
+                            <input type="number" name="Input.WindSpeedMph" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Wind bearing (degrees):
+                        </td>
+                        <td>
+                            <input type="number" name="Input.WindBearingDegrees" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mass (kg):
+                        </td>
+                        <td>
+                            <input type="number" name="Input.Mass" />
+                        </td>
+                    </tr>
+                </table>
+               
+                
                 <div>
                     <button type="submit" class="btn btn-primary btn-lg" role="button">Upload</button>
                 </div>
