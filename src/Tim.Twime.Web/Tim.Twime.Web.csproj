@@ -238,6 +238,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tim.Twime.Models\Tim.Twime.Models.fsproj">
+      <Project>{41b35659-c79f-4a5b-9f3f-4c77be9ce595}</Project>
+      <Name>Tim.Twime.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tim.Twime.Services\Tim.Twime.Services.csproj">
+      <Project>{1830ca95-2c5f-4972-8fd5-6c00cf87c6e5}</Project>
+      <Name>Tim.Twime.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

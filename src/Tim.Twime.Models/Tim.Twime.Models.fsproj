@@ -45,6 +45,8 @@
     <None Include="Script.fsx" />
     <Compile Include="Ride.fs" />
     <Compile Include="Leg.fs" />
+    <Compile Include="UploadedFile.fs" />
+    <Compile Include="RideAnalysis.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tim.Geography\Tim.Geography.fsproj">

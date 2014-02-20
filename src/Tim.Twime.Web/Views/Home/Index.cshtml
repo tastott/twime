@@ -1,13 +1,25 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "twime";
 }
 
  <div class="container theme-showcase" role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>The Wind is my <strong>Enemy</strong>.</h1>
-        <p>It's yours too. Upload a GPX of your blustery ride to find out how solid you are.</p>
-        <p><a href="#" class="btn btn-primary btn-lg" role="button">Upload &raquo;</a></p>
+        <h1>"The Wind is my <strong>Enemy.</strong>"</h1>
+        <p>You would have gone <i>so</i> much faster without that stupid wind.</p>
+        <p>Upload a GPX of your blustery ride to salve your damaged ego.</p>
+        <div>
+            @using(Html.BeginForm("Upload", "Home", FormMethod.Post, new {enctype="multipart/form-data"}))
+            {
+                <input type="file" name="file" />
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg" role="button">Upload</button>
+                </div>
+            }
+        </div>
     </div>
+     <div>
+         <h2>@ViewBag.Thingy</h2>
+     </div>
  </div>
