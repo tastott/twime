@@ -8,14 +8,17 @@ namespace Tim.Twime.Web.Controllers
 {
     using Services;
     using Models;
+    using ViewModels;
 
     public class HomeController : Controller
     {
         private AnalysisService _analysisService;
+        private UploadService _uploadService;
 
-        public HomeController()
+        public HomeController(AnalysisService analysisService, UploadService uploadService)
         {
-            _analysisService = new AnalysisService();
+            _analysisService = analysisService;
+            _uploadService = uploadService;
         }
 
         public ActionResult Index()
@@ -23,10 +26,14 @@ namespace Tim.Twime.Web.Controllers
             return View();
         }
 
-        public ActionResult Upload(HttpPostedFileBase file)
+        public ActionResult Upload(RideAnalysisInput input)
         {
-            var uploadedFile = new UploadedFile(file.FileName, file.InputStream);
-            var analysis = _analysisService.UploadAndAnalyse(uploadedFile);
+            var uploadedFile = new UploadedFile(input.File.FileName, input.File.InputStream);
+            var guid = _uploadService.UploadGpx(uploadedFile);
+
+            var ride = _uploadService.RetrieveGpx(guid);
+            var analysisRequest = new RideAnalysisRequest(ride, input.WindSpeedMph, input.WindBearingDegrees);
+            var analysis = _analysisService.Analyse(analysisRequest);
 
             ViewBag.Thingy = analysis.Thingy;
 

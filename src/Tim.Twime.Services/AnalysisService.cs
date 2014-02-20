@@ -12,19 +12,16 @@ namespace Tim.Twime.Services
 
     public class AnalysisService
     {
-        private Importer _importer;
         private RideAnalyser _analyser;
 
-        public AnalysisService()
+        public AnalysisService(RideAnalyser analyser)
         {
-            _analyser = new RideAnalyser();
-            _importer = new Importer();
+            _analyser = analyser;
         }
 
-        public RideAnalysis UploadAndAnalyse(UploadedFile file)
+        public RideAnalysis Analyse(RideAnalysisRequest request)
         {
-            var ride = new Ride(_importer.GetWaypointsFromGpxFile(file.Content).ToArray(), file.Filename);
-            var analysis = _analyser.AnalyseRide(ride);
+            var analysis = _analyser.AnalyseRide(request);
 
             return analysis;
         }
