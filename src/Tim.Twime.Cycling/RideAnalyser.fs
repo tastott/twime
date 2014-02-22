@@ -19,6 +19,6 @@
                 Energy = legs |> Array.sumBy(fun x -> x.PedalEnergy);
                 WindEnergy = legs |> Array.sumBy(fun x -> x.WindEnergy);
                 WindClimbEquivalent = legs |> Array.sumBy(fun x -> x.WindClimbEquivalent);
-                RideProfile = GetRideProfile legs 10
+                RideProfile = GetRideProfile legs 100.<meter>
             }
 

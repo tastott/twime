@@ -48,6 +48,9 @@ namespace Tim.Twime.Web
 
             bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
                 "~/Scripts/chart.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/requirejs").Include(
+                "~/Scripts/require.js"));
         }
     }
 }

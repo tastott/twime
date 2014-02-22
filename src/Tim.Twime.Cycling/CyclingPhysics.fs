@@ -102,16 +102,18 @@ module CyclingPhysics =
 
         [| for i in 1 .. legs.Length - 1 do
                         yield new AnalysedLeg(legs.[i], legs.[i-1], mass, model) |]
-                        
-                        
-    let GetRideProfile (legs : #Leg[]) (points : int) = 
-        let interval = legs.Length / (points - 1)
+             
+    let GetRideProfile (legs : #Leg[]) (distanceInterval : float<meter>) = 
+        let nextInterval = ref 0
         let totalDistance = ref 0.<meter>
 
         [| 
             for i in 0 .. legs.Length - 1 do
-                if(i % interval = 0 || i = legs.Length - 1) then
-                    yield {Distance = !totalDistance; Elevation = legs.[i].Start.Elevation} 
-
                 totalDistance := !totalDistance + legs.[i].Distance
+                let nextDistance = float !nextInterval * distanceInterval
+
+                if(!totalDistance >= nextDistance || i = legs.Length - 1) then
+                    nextInterval := !nextInterval + 1
+                    let adjustedElevation = legs.[i].Start.Elevation + ((!totalDistance - nextDistance) / legs.[i].Distance) * legs.[i].Climb
+                    yield {Distance = nextDistance; Elevation = adjustedElevation}  
         |]
