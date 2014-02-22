@@ -18,7 +18,7 @@
                             File:
                         </td>
                         <td>
-                            <input type="file" name="Input.File" />
+                            <input type="file" name="Input.File" value="C:\Users\Tim\Downloads\14-02-2014 PM.gpx" />
                         </td>
                     </tr>
                     <tr>
@@ -26,7 +26,7 @@
                             Wind speed (mph):
                         </td>
                         <td>
-                            <input type="number" name="Input.WindSpeedMph" />
+                            <input type="number" name="Input.WindSpeedMph" value="10"/>
                         </td>
                     </tr>
                     <tr>
@@ -34,7 +34,7 @@
                             Wind bearing (degrees):
                         </td>
                         <td>
-                            <input type="number" name="Input.WindBearingDegrees" />
+                            <input type="number" name="Input.WindBearingDegrees" value="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -42,7 +42,7 @@
                             Mass (kg):
                         </td>
                         <td>
-                            <input type="number" name="Input.Mass" />
+                            <input type="number" name="Input.Mass" value="80"/>
                         </td>
                     </tr>
                 </table>
@@ -54,7 +54,10 @@
             }
         </div>
     </div>
+     @if (ViewBag.Analysis != null)
+     {
      <div>
-         <h2>@ViewBag.Thingy</h2>
+         @Html.Partial("_RideAnalysis", (Tim.Twime.Models.RideAnalysis)ViewBag.Analysis)
      </div>
+     }
  </div>

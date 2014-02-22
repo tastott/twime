@@ -4,7 +4,6 @@
     open Tim.Geography.Geography
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
 
-
     type RideAnalysisRequest =
         { Ride : Ride;
           WindSpeed : float<mph>;

@@ -9,3 +9,7 @@ type Waypoint =
           Longitude: float<degree>;
           Time: System.DateTime;
           Elevation: float<meter> }
+
+type ProfilePoint =
+    { Distance : float<meter>;
+      Elevation : float<meter>; }

@@ -1,0 +1,66 @@
+﻿@model Tim.Twime.Models.RideAnalysis
+
+<table>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>Distance:</td>
+                    <td>@Model.Distance</td>
+                </tr>
+                <tr>
+                    <td>Duration:</td>
+                    <td>@Model.Duration</td>
+                </tr>
+                <tr>
+                    <td>Energy:</td>
+                    <td>@Model.Energy</td>
+                </tr>
+                <tr>
+                    <td>Wind energy:</td>
+                    <td>@Model.WindEnergy</td>
+                </tr>
+                <tr>
+                    <td>Wind climb equivalent (m):</td>
+                    <td>@Model.WindClimbEquivalent</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <div>
+                <canvas id="canvas" width="700" height="400"></canvas>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+<script>
+
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				//{
+					//fillColor : "rgba(220,220,220,0.5)",
+					//strokeColor : "rgba(220,220,220,1)",
+					//pointColor : "rgba(220,220,220,1)",
+					//pointStrokeColor : "#fff",
+					//data : [@String.Join(",", Model.RideProfile.Select(x => x.Elevation))]
+				//}
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data: [@String.Join(",", Model.RideProfile.Select(x => x.Elevation))]
+				}
+			]
+			
+		}
+
+	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+	
+</script>
+

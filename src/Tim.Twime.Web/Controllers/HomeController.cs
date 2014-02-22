@@ -35,7 +35,7 @@ namespace Tim.Twime.Web.Controllers
             var analysisRequest = new RideAnalysisRequest(ride, input.WindSpeedMph, input.WindBearingDegrees, input.Mass);
             var analysis = _analysisService.Analyse(analysisRequest);
 
-            ViewBag.Thingy = analysis.Thingy;
+            ViewBag.Analysis = analysis;
 
             return View("Index");
         }

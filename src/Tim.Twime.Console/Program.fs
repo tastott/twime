@@ -26,7 +26,7 @@ module Program =
             let massEx = 70.<kilogram>
             let vWindEx = 20.<mph>
             
-            let legs = analyseWaypoints waypoints massEx 0.<radian> (MphToMps vWindEx)
+            let legs = AnalyseWaypoints waypoints massEx 0.<radian> (MphToMps vWindEx)
             exporter.ExportAnalysedLegsToCsvFile(legs, @"C:\users\tim\desktop\14-02-2014 PM - unsmoothed.csv")
 
             let maxPower = legs |> Array.maxBy(fun l -> l.PedalPower)

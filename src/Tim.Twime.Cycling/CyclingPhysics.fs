@@ -30,31 +30,36 @@ module CyclingPhysics =
     let areaEx = 0.5<meter^2>
 
     ///Rolling resistance force. cRoll = coefficient of rolling resistance.
-    let fRoll cRoll (mass : float<kilogram>) = cRoll * mass * gravity
+    let FRoll cRoll (mass : float<kilogram>) = cRoll * mass * gravity
 
     ///Force due to gravity on a gradient. 0 gradient is flat, 1 gradient is straight up. mass in kg.
-    let fGrad gradient (mass : float<kilogram>) = gradient * mass * gravity
+    let FGrad gradient (mass : float<kilogram>) = gradient * mass * gravity
 
     ///Force due to air resistance. airDensity in kg/m^3. cWind = coefficient of air resistance. area in m^2. vWind = bike velocity + wind velocity in m/s.
-    let fWind (airDensity : float<kilogram/meter^3>) cWind (area : float<meter^2>) (vWindBike : float<meter/second>) = airDensity * cWind * area * 0.5 * vWindBike * vWindBike
+    let FWind (airDensity : float<kilogram/meter^3>) cWind (area : float<meter^2>) (vWindBike : float<meter/second>) = airDensity * cWind * area * 0.5 * vWindBike * vWindBike
 
-    let fPedal cRoll mass gradient airDensity cWind area vWindBike (acc : float<meter/second^2>) = 
-        (mass * acc) + (fRoll cRoll mass) + (fGrad gradient mass) + (fWind airDensity cWind area vWindBike)
+    let FPedal cRoll mass gradient airDensity cWind area vWindBike (acc : float<meter/second^2>) = 
+        (mass * acc) + (FRoll cRoll mass) + (FGrad gradient mass) + (FWind airDensity cWind area vWindBike)
 
-    let pPedal cRoll mass gradient airDensity cWind area vWindBike acc (vBike : float<meter/second>) =
-        (fPedal cRoll mass gradient airDensity cWind area vWindBike acc) * vBike
+    let PPedal cRoll mass gradient airDensity cWind area vWindBike acc (vBike : float<meter/second>) =
+        (FPedal cRoll mass gradient airDensity cWind area vWindBike acc) * vBike
 
         
     type SimpleCyclingModel(windBearing, windSpeed : float<meter/second>, airDensity, cWind, area, cRoll) =
         interface ICyclingModel with   
             member this.AirForce bearing speed = this._AirForce bearing speed  
-            member this.WindForce bearing speed = this._AirForce bearing speed - fWind airDensity cWind area speed
-            member this.RollForce mass = fRoll cRoll mass
-            member this.ClimbForce mass gradient = fGrad gradient mass
+            member this.WindForce bearing speed = this._WindForce bearing speed
+            member this.RollForce mass = FRoll cRoll mass
+            member this.ClimbForce mass gradient = FGrad gradient mass
+            member this.WindClimbEquivalent mass bearing speed distance = 
+                (this._WindForce bearing speed) * distance / (mass * gravity)
 
         member private this._AirForce bearing speed =
             let vWind = (cos (float (windBearing - bearing))) * windSpeed
-            fWind airDensity cWind area (speed - vWind)
+            FWind airDensity cWind area (speed - vWind)
+
+        member private this._WindForce bearing speed = 
+            this._AirForce bearing speed - FWind airDensity cWind area speed
 
 
 
@@ -89,7 +94,7 @@ module CyclingPhysics =
 //                (float this.Acceleration)
 //                (float this.PedalPower)
 
-    let analyseWaypoints (waypoints : Waypoint[]) mass windBearing windSpeed = 
+    let AnalyseWaypoints (waypoints : Waypoint[]) mass windBearing windSpeed = 
         let legs = [| for i in 1 .. waypoints.Length - 1 do
                         yield new Leg(waypoints.[i-1], waypoints.[i]) |]
 
@@ -99,4 +104,14 @@ module CyclingPhysics =
                         yield new AnalysedLeg(legs.[i], legs.[i-1], mass, model) |]
                         
                         
-   
+    let GetRideProfile (legs : #Leg[]) (points : int) = 
+        let interval = legs.Length / (points - 1)
+        let totalDistance = ref 0.<meter>
+
+        [| 
+            for i in 0 .. legs.Length - 1 do
+                if(i % interval = 0 || i = legs.Length - 1) then
+                    yield {Distance = !totalDistance; Elevation = legs.[i].Start.Elevation} 
+
+                totalDistance := !totalDistance + legs.[i].Distance
+        |]
