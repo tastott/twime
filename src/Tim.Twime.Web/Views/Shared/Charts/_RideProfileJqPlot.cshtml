@@ -7,21 +7,29 @@
             url: "/Home/GetAnalysis/@ViewBag.AnalysisId",
             type: "POST",
             success: function (analysis) {
-                var series = RideProfileToJqPlotSeries(analysis.RideProfile);
+                var originalProfileSeries = RideProfileToJqPlotSeries(analysis.RideProfile);
+                var adjustedProfileSeries = RideProfileToJqPlotSeries(analysis.WindAdjustedRideProfile);
+
                 var options = {
                     axes: {
                         xaxis: {
                             pad:0
                         }
                     },
+                    seriesDefaults: {
+                        markerOptions: {
+                            show: false
+                        }
+                    },
                     series: [
                         {
-                            fill: true
+                            fill: true,
+                            fillAlpha: 0.5
                         }
                     ]
                 };
 
-                $.jqplot('chartdiv', [series], options);
+                $.jqplot('chartdiv', [originalProfileSeries, adjustedProfileSeries], options);
             }
         });
 

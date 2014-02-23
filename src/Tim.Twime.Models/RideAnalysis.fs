@@ -9,6 +9,7 @@
             Energy : float<kilogram meter^2 / second ^ 2>;
             WindEnergy : float<kilogram meter^2 / second ^ 2>;
             WindClimbEquivalent : float<meter>
-            RideProfile : ProfilePoint[]
+            RideProfile : ProfilePoint[];
+            WindAdjustedRideProfile : ProfilePoint[];
         }
 
