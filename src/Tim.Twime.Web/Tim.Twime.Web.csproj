@@ -255,6 +255,8 @@
     <Content Include="Views\Shared\_RideAnalysis.cshtml" />
     <Content Include="Views\Shared\Charts\_RideProfileChartJs.cshtml" />
     <Content Include="Views\Shared\Charts\_RideProfileJqPlot.cshtml" />
+    <Content Include="Views\Shared\_Upload.cshtml" />
+    <Content Include="Views\Shared\_Rides.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

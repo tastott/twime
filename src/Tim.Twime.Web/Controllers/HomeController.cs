@@ -38,12 +38,14 @@ namespace Tim.Twime.Web.Controllers
 
         public ActionResult Index()
         {
-            if (AnalysisStore.Any())
-            {
-                ViewBag.AnalysisId = AnalysisStore.Keys.First();
-            }
-
             return View();
+        }
+
+        public ActionResult AllRides()
+        {
+            var rides = _uploadService.GetAllRides();
+
+            return PartialView("_Rides", rides.Values);
         }
 
         public ActionResult Upload(RideAnalysisInput input)
@@ -51,16 +53,13 @@ namespace Tim.Twime.Web.Controllers
             var uploadedFile = new UploadedFile(input.File.FileName, input.File.InputStream);
             var guid = _uploadService.UploadGpx(uploadedFile);
 
-            var ride = _uploadService.RetrieveGpx(guid);
+            var ride = _uploadService.GetRide(guid);
             var analysisRequest = new RideAnalysisRequest(ride, input.WindSpeedMph, input.WindBearingDegrees, input.Mass);
             
             var analysis = _analysisService.Analyse(analysisRequest);
-            var analysisId = Guid.NewGuid();
-            AnalysisStore[analysisId] = analysis;
+            AnalysisStore[guid] = analysis;
 
-            ViewBag.AnalysisId = analysisId;
-
-            return View("Index");
+            return AllRides();
         }
 
         public JsonResult GetAnalysis(Guid id)

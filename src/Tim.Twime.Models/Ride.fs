@@ -1,5 +1,6 @@
 ﻿namespace Tim.Twime.Models
 
 type Ride = 
-    { Waypoints : Waypoint[] 
+    { Guid : System.Guid;
+      Waypoints : Waypoint[] 
       Filename : string }

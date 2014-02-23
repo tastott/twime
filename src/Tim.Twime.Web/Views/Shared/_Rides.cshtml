@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Tim.Twime.Models.Ride>
+
+<ul>
+    @foreach (var ride in Model)
+    {
+        <li><a onclick="loadAnalysis('@ride.Guid')">@ride.Filename</a></li>
+    }
+</ul>
+
+<script>
+    function loadAnalysis(guid) {
+        $.ajax({
+            url: "/Home/GetAnalysisHtml/" + guid,
+             success: function (html) {
+                 $('#analysis').html(html);
+             }
+         });
+    }
+</script>

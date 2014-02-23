@@ -24,14 +24,19 @@ namespace Tim.Twime.Services
         {
             var guid = Guid.NewGuid();
 
-            _rides[guid] = new Ride(_importer.GetWaypointsFromGpxFile(file.Content).ToArray(), file.Filename);
+            _rides[guid] = new Ride(guid, _importer.GetWaypointsFromGpxFile(file.Content).ToArray(), file.Filename);
 
             return guid;
         }
 
-        public Ride RetrieveGpx(Guid guid)
+        public Ride GetRide(Guid guid)
         {
             return _rides[guid];
+        }
+
+        public IDictionary<Guid, Ride> GetAllRides()
+        {
+            return _rides;
         }
     }
 }

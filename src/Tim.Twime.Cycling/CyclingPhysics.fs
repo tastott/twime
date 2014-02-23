@@ -5,21 +5,6 @@ module CyclingPhysics =
     open Tim.Geography.Geography
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
 
-
-    type Vector2D<[<Measure>] 'u>(x : float<'u>, y : float<'u>) = 
-        /// The length of the vector, computed when the object is constructed
-        let length = sqrt (x*x + y*y)
-
-        // 'this' specifies a name for the object's self identifier.
-        // In instance methods, it must appear before the member name.
-        member this.X = x  
-
-        member this.Y = y
-
-        member this.Length = length
-
-        member this.Scale(k) = Vector2D(k * this.X, k * this.Y)
-
     //http://sheldonbrown.com/rinard/aero/formulas.htm
 
     let gravity = 9.81<meter/second^2>
@@ -60,39 +45,6 @@ module CyclingPhysics =
 
         member private this._WindForce bearing speed = 
             this._AirForce bearing speed - FWind airDensity cWind area speed
-
-
-
-//    type AnalysedLeg(leg : Leg, legBefore : Leg, cRoll, mass, airDensity, cWind, area, windBearing : float<radian>, windSpeed : float<meter/second>) =
-//        inherit Leg(leg.Start, leg.Finish)
-//        member this.LegBefore = legBefore
-//        member this.Acceleration = (this.Speed - legBefore.Speed) / this.Duration
-//        member this.AirForce = 
-//            let vWind = (cos (float (windBearing - this.Bearing))) * windSpeed
-//            fWind airDensity cWind area (this.Speed - vWind)
-//        member this.WindForce = this.AirForce - fWind airDensity cWind area this.Speed
-//        member this.RollForce = fRoll cRoll mass
-//        member this.ClimbForce = fGrad this.Gradient mass
-//        member this.AccelerationForce = mass * this.Acceleration
-//        member this.PedalForce = this.AirForce + this.RollForce + this.ClimbForce + this.AccelerationForce
-//        member this.PedalEnergy = this.PedalForce * this.Distance
-//        member this.PedalPower = this.PedalForce * this.Speed
-//        member this.WindPower = this.WindForce * this.Speed
-//        member this.WindEnergy = this
-//        let this.PrettyPrint = 
-//            printfn @"\n\nAt:%f,%f
-//                     Distance:%.1fm
-//                     Gradient:%.2f 
-//                     Duration: %.1fs
-//                     Speed: %.1fkph = %.1fm/s
-//                     Acceleration: %.1fm/s^2
-//
-//                     Power:%.0fW" 
-//                (float this.Start.Latitude) (float this.Start.Longitude) 
-//                (float this.Distance) this.Gradient (float this.Duration) 
-//                (float (this.Speed / mpsPerKph)) (float this.Speed)
-//                (float this.Acceleration)
-//                (float this.PedalPower)
 
     let AnalyseWaypoints (waypoints : Waypoint[]) mass windBearing windSpeed = 
         let legs = [| for i in 1 .. waypoints.Length - 1 do
