@@ -54,10 +54,17 @@
             }
         </div>
     </div>
-     @if (ViewBag.Analysis != null)
+     @if (ViewBag.AnalysisId != null)
      {
-     <div>
-         @Html.Partial("_RideAnalysis", (Tim.Twime.Models.RideAnalysis)ViewBag.Analysis)
-     </div>
+        <div id="analysis" />
+        <script>
+            $.ajax({
+                url: "/Home/GetAnalysisHtml/@(ViewBag.AnalysisId)",
+                success: function (html) {
+                    $('#analysis').html(html);
+                }
+            });
+
+        </script>
      }
  </div>

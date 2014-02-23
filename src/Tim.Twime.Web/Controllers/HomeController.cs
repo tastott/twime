@@ -15,6 +15,21 @@ namespace Tim.Twime.Web.Controllers
         private AnalysisService _analysisService;
         private UploadService _uploadService;
 
+        public IDictionary<Guid, RideAnalysis> AnalysisStore
+        {
+            get
+            {
+                var store = Session["AnalysisStore"] as IDictionary<Guid, RideAnalysis>;
+                if (store == null)
+                {
+                    store = new Dictionary<Guid, RideAnalysis>();
+                    Session["AnalysisStore"] = store;
+                }
+
+                return store;
+            }
+        }
+
         public HomeController(AnalysisService analysisService, UploadService uploadService)
         {
             _analysisService = analysisService;
@@ -23,6 +38,11 @@ namespace Tim.Twime.Web.Controllers
 
         public ActionResult Index()
         {
+            if (AnalysisStore.Any())
+            {
+                ViewBag.AnalysisId = AnalysisStore.Keys.First();
+            }
+
             return View();
         }
 
@@ -33,11 +53,29 @@ namespace Tim.Twime.Web.Controllers
 
             var ride = _uploadService.RetrieveGpx(guid);
             var analysisRequest = new RideAnalysisRequest(ride, input.WindSpeedMph, input.WindBearingDegrees, input.Mass);
+            
             var analysis = _analysisService.Analyse(analysisRequest);
+            var analysisId = Guid.NewGuid();
+            AnalysisStore[analysisId] = analysis;
 
-            ViewBag.Analysis = analysis;
+            ViewBag.AnalysisId = analysisId;
 
             return View("Index");
+        }
+
+        public JsonResult GetAnalysis(Guid id)
+        {
+            var analysis = AnalysisStore[id];
+
+            return Json(analysis);
+        }
+
+        public ActionResult GetAnalysisHtml(Guid id)
+        {
+            var analysis = AnalysisStore[id];
+            ViewBag.AnalysisId = id;
+
+            return PartialView("_RideAnalysis", analysis);
         }
     }
 }

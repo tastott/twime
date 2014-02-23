@@ -1,11 +1,31 @@
-﻿@model Tim.Twime.Models.RideAnalysis
-
-<div id="chartdiv" style="height:400px;width:300px; "></div>
+﻿<div id="chartdiv" style="height:400px;width:600px; "></div>
 
 <script type="text/javascript">
-    require(["charts/jquery.jqplot"], function (module) {
+    require(["charts/jquery.jqplot", "charts/tim.chartutils"], function (module) {
 
-        $.jqplot('chartdiv', [[[1, 2], [3, 5.12], [5, 13.1], [7, 33.6], [9, 85.9], [11, 219.9]]]);
+        $.ajax({
+            url: "/Home/GetAnalysis/@ViewBag.AnalysisId",
+            type: "POST",
+            success: function (analysis) {
+                var series = RideProfileToJqPlotSeries(analysis.RideProfile);
+                var options = {
+                    axes: {
+                        xaxis: {
+                            pad:0
+                        }
+                    },
+                    series: [
+                        {
+                            fill: true
+                        }
+                    ]
+                };
+
+                $.jqplot('chartdiv', [series], options);
+            }
+        });
+
+    //    $.jqplot('chartdiv', [[[1, 2], [3, 5.12], [5, 13.1], [7, 33.6], [9, 85.9], [11, 219.9]]]);
     });
 
 </script>
