@@ -11,6 +11,22 @@
     @Scripts.Render("~/bundles/jquery")
     <script type="text/javascript" data-main="../scripts/main" src="~/Scripts/require.js"></script>
 
+    <style>
+        body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,7 +34,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     </head>
-    <body>
+    <body role="main">
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -39,14 +55,14 @@
             </div><!--/.nav-collapse -->
           </div>
         </div>
-        <div class="container">
+        <div class="container theme-showcase" role="main">
             @RenderBody()
         </div>
 
-        
+         
         @RenderSection("scripts", required: false)
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>*@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         @Scripts.Render("~/bundles/bootstrap")
     </body>

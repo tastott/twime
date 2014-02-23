@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="ViewModels\RideAnalysisInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Views\Shared\_RidesAndUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
@@ -221,6 +222,7 @@
     <Content Include="Scripts\Charts\Chart.min.js" />
     <Content Include="Scripts\Charts\jquery.jqplot.js" />
     <Content Include="Scripts\Charts\tim.chartutils.js" />
+    <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -237,8 +239,13 @@
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\domReady.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\require.min.js" />
+    <Content Include="Scripts\sprintf.js" />
+    <Content Include="Scripts\tim.ko.extensions.js" />
+    <Content Include="Scripts\ViewModels\AnalysesViewModel.js" />
+    <Content Include="Scripts\ViewModels\AnalysisViewModel.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -255,8 +262,9 @@
     <Content Include="Views\Shared\_RideAnalysis.cshtml" />
     <Content Include="Views\Shared\Charts\_RideProfileChartJs.cshtml" />
     <Content Include="Views\Shared\Charts\_RideProfileJqPlot.cshtml" />
-    <Content Include="Views\Shared\_Upload.cshtml" />
+    <Content Include="Views\Shared\_UploadInputs.cshtml" />
     <Content Include="Views\Shared\_Rides.cshtml" />
+    <Content Include="Views\Home\Analysis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

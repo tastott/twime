@@ -1,0 +1,64 @@
+﻿<div id="rides"></div>
+
+<form id="frm-upload" method="post" enctype="multipart/form-data">
+    @Html.Partial("_UploadInputs")
+</form>
+
+<button id="btn-upload" type="button" class="" role="button">Upload</button>
+<progress style="visibility:hidden"></progress>
+
+<script>
+    function refreshRides() {
+        $.ajax({
+            url: "/Home/_AllRides",
+            success: function (html) {
+                $('#rides').html(html);
+            }
+        });
+    }
+
+    function loadAnalysis(guid) {
+        $.ajax({
+            url: "/Home/_GetAnalysis/" + guid,
+             success: function (html) {
+                 $('#analysis').html(html);
+             }
+         });
+    }
+
+    $('#btn-upload').click(function () {
+        var formData = new FormData($('#frm-upload'));
+        $.ajax({
+            url: '/Home/_Upload',  //Server script to process data
+            type: 'POST',
+            xhr: function () {  // Custom XMLHttpRequest
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) { // Check if upload property exists
+                    myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+                }
+                return myXhr;
+            },
+            //Ajax events
+            beforeSend: function () { $('progress').show(); },
+            complete: function () { $('progress').hide(); },
+            success: function (response) {
+                refreshRides();
+            },
+            //error: errorHandler,
+            // Form data
+            data: formData,
+            //Options to tell jQuery not to process data or worry about content-type.
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
+    function progressHandlingFunction(e) {
+        if (e.lengthComputable) {
+            $('progress').attr({ value: e.loaded, max: e.total });
+        }
+    }
+
+    refreshRides();
+</script>

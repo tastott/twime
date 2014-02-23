@@ -41,35 +41,52 @@ namespace Tim.Twime.Web.Controllers
             return View();
         }
 
-        public ActionResult AllRides()
+        public JsonResult AllRides()
         {
-            var rides = _uploadService.GetAllRides();
+            var rides = _uploadService.GetAllRides().Values;
 
-            return PartialView("_Rides", rides.Values);
+            return Json(rides, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Upload(RideAnalysisInput input)
+        public ActionResult UploadAndAnalyse(RideAnalysisInput input)
+        {
+            _UploadAndAnalyse(input);
+
+            return RedirectToAction("Analysis");
+        }
+
+        public ActionResult _Upload(RideAnalysisInput input)
+        {
+            _UploadAndAnalyse(input);
+
+            return Json(new { });
+        }
+
+        public ActionResult Analysis()
+        {
+            return View();
+        }
+
+        private void _UploadAndAnalyse(RideAnalysisInput input)
         {
             var uploadedFile = new UploadedFile(input.File.FileName, input.File.InputStream);
             var guid = _uploadService.UploadGpx(uploadedFile);
 
             var ride = _uploadService.GetRide(guid);
             var analysisRequest = new RideAnalysisRequest(ride, input.WindSpeedMph, input.WindBearingDegrees, input.Mass);
-            
+
             var analysis = _analysisService.Analyse(analysisRequest);
             AnalysisStore[guid] = analysis;
-
-            return AllRides();
         }
 
         public JsonResult GetAnalysis(Guid id)
         {
             var analysis = AnalysisStore[id];
 
-            return Json(analysis);
+            return Json(analysis, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetAnalysisHtml(Guid id)
+        public ActionResult _GetAnalysis(Guid id)
         {
             var analysis = AnalysisStore[id];
             ViewBag.AnalysisId = id;

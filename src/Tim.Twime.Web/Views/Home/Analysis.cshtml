@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Analysis";
+}
+
+<script>
+    require(["knockout", "ViewModels/AnalysesViewModel", "domReady!"], function (ko, AnalysesViewModel) {
+       
+        $.getJSON("/Home/AllRides", function (rides) {
+            var viewModel = new AnalysesViewModel(rides);
+            ko.applyBindings(viewModel);
+        });
+
+    });
+</script>
+
+<ul id="rides" data-bind="foreach: Rides">
+    <li><a data-bind="text: Filename, click: $parent.LoadAnalysis(Guid)"></a></li>
+</ul>
+
+<table data-bind="if: Analysis">
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>Distance:</td>
+                    <td data-bind="text: Analysis().DistanceKm" />
+                </tr>
+                <tr>
+                    <td>Duration:</td>
+                   <td data-bind="text: Analysis().Duration" />
+                </tr>
+                <tr>
+                    <td>Energy:</td>
+                    <td data-bind="text: Analysis().EnergykJ" />
+                </tr>
+                <tr>
+                    <td>Wind energy:</td>
+                    <td data-bind="text: Analysis().WindEnergykJ" />
+                </tr>
+                <tr>
+                    <td>Wind climb equivalent (m):</td>
+                    <td data-bind="text: Analysis().WindClimbEquivalent" />
+                </tr>
+            </table>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
