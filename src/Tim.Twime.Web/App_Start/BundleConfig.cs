@@ -41,7 +41,12 @@ namespace Tim.Twime.Web
 
             bundles.Add(new StyleBundle("~/Content/bootstrap/css").Include(
                 "~/Content/bootstrap/css/bootstrap.css",
-                "~/Content/bootstrap/css/bootstrap-theme.css"));
+                "~/Content/bootstrap/css/bootstrap-theme.css",
+                "~/Content/bootstrap/css/dashboard.css"));
+
+            bundles.Add(new StyleBundle("~/Content/pure").Include(
+                "~/Content/pure/pure-min.css",
+                "~/Content/pure/side-menu.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"));

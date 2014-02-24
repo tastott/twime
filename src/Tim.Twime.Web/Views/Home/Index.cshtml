@@ -4,14 +4,17 @@
 
 
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
+ <div class="header">
     <h1>"The Wind is my <strong>Enemy.</strong>"</h1>
-    <p>You would have gone <i>so</i> much faster without that stupid wind.</p>
-    <p>Upload a GPX of your blustery ride to salve your damaged ego.</p>
+    <h2>You would have gone <i>so</i> much faster without that stupid wind. 
+        <br />Upload a GPX of your blustery ride to salve your damaged ego.
+
+    </h2>
 </div>
-<div id="upload">
-    <form action="@Url.Action("UploadAndAnalyse")" method="post" enctype="multipart/form-data">
+<div class="content">
+    <h1></h1>
+    
+    <form action="@Url.Action("UploadAndAnalyse")" method="post" enctype="multipart/form-data" class="pure-form pure-form-stacked">
         @Html.Partial("_UploadInputs")
         <button type="submit" class="btn btn-primary btn-lg" role="button">Upload</button>
     </form>

@@ -3,47 +3,72 @@
 }
 
 <script>
-    require(["knockout", "ViewModels/AnalysesViewModel", "domReady!"], function (ko, AnalysesViewModel) {
+    require(["knockout", "tim.ko.extensions", "ViewModels/AnalysesViewModel", "charts/jquery.jqplot", "charts/tim.chartutils", "domReady!"], 
+        function (ko, koex, AnalysesViewModel) {
        
-        $.getJSON("/Home/AllRides", function (rides) {
-            var viewModel = new AnalysesViewModel(rides);
-            ko.applyBindings(viewModel);
-        });
+            $.getJSON("/Home/AllRides", function (rides) {
+                var viewModel = new AnalysesViewModel(rides);
+                ko.applyBindings(viewModel);
 
-    });
+                viewModel.Analysis.subscribe(function (analysis) {
+                    var originalProfileSeries = RideProfileToJqPlotSeries(analysis.RideProfile);
+                    var adjustedProfileSeries = RideProfileToJqPlotSeries(analysis.WindAdjustedRideProfile);
+
+                    var options = {
+                        axes: {
+                            xaxis: {
+                                pad: 0
+                            }
+                        },
+                        seriesDefaults: {
+                            markerOptions: {
+                                show: false
+                            }
+                        },
+                        series: [
+                            {
+                                fill: true,
+                                fillAlpha: 0.5
+                            }
+                        ]
+                    };
+
+                    $.jqplot('chartdiv', [originalProfileSeries, adjustedProfileSeries], options);
+                });
+            });
+        });
 </script>
 
-<ul id="rides" data-bind="foreach: Rides">
-    <li><a data-bind="text: Filename, click: $parent.LoadAnalysis(Guid)"></a></li>
-</ul>
-
-<table data-bind="if: Analysis">
-    <tr>
-        <td>
-            <table>
-                <tr>
-                    <td>Distance:</td>
-                    <td data-bind="text: Analysis().DistanceKm" />
-                </tr>
-                <tr>
-                    <td>Duration:</td>
-                   <td data-bind="text: Analysis().Duration" />
-                </tr>
-                <tr>
-                    <td>Energy:</td>
-                    <td data-bind="text: Analysis().EnergykJ" />
-                </tr>
-                <tr>
-                    <td>Wind energy:</td>
-                    <td data-bind="text: Analysis().WindEnergykJ" />
-                </tr>
-                <tr>
-                    <td>Wind climb equivalent (m):</td>
-                    <td data-bind="text: Analysis().WindClimbEquivalent" />
-                </tr>
-            </table>
-        </td>
-        <td>
-        </td>
-    </tr>
-</table>
+<div class="content">
+    <table data-bind="if: Analysis">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>Distance:</td>
+                        <td data-bind="numericText: Analysis().Distance/1000, precision: 1, units:'km'" />
+                    </tr>
+                    <tr>
+                        <td>Duration:</td>
+                        <td data-bind="timeSpanText: Analysis().Duration" />
+                    </tr>
+                    <tr>
+                        <td>Energy:</td>
+                        <td data-bind="numericText: Analysis().Energy/1000, precision: 0, units:'kJ'" />
+                    </tr>
+                    <tr>
+                        <td>Wind energy:</td>
+                        <td data-bind="numericText: Analysis().WindEnergy / 1000, precision: 0, units: 'kJ'" />
+                    </tr>
+                    <tr>
+                        <td>Wind climb equivalent:</td>
+                        <td data-bind="numericText: Analysis().WindClimbEquivalent, precision: 0, units: 'm'" />
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div id="chartdiv" style="height:400px;width:600px;"></div>
+            </td>
+        </tr>
+    </table>
+</div>
