@@ -3,21 +3,33 @@
 }
 
 <script>
-    require(["knockout", "tim.ko.extensions", "ViewModels/AnalysesViewModel", "charts/jquery.jqplot", "charts/tim.chartutils", "domReady!"], 
-        function (ko, koex, AnalysesViewModel) {
+    require(["knockout", "tim.ko.extensions", "ViewModels/AnalysesViewModel", "Drawing/WindWidget", "jquery",
+        "jqplot", "charts/tim.chartutils", "domReady!"],
+        function (ko, koex, AnalysesViewModel, ww, jQuery, plot) {
        
             $.getJSON("/Home/AllRides", function (rides) {
                 var viewModel = new AnalysesViewModel(rides);
                 ko.applyBindings(viewModel);
 
                 viewModel.Analysis.subscribe(function (analysis) {
+                    ww.Draw('wind-widget', analysis.WindSpeed.toFixed(0), analysis.WindBearing);
+                });
+
+                viewModel.Analysis.subscribe(function (analysis) {
+   
                     var originalProfileSeries = RideProfileToJqPlotSeries(analysis.RideProfile);
                     var adjustedProfileSeries = RideProfileToJqPlotSeries(analysis.WindAdjustedRideProfile);
 
                     var options = {
                         axes: {
                             xaxis: {
-                                pad: 0
+                                pad: 0,
+                                label: "Distance (km)",
+                                labelRenderer: plot.CanvasAxisLabelRenderer
+                            },
+                            yaxis: {
+                                label: "Elevation (m)",
+                                labelRenderer: plot.CanvasAxisLabelRenderer
                             }
                         },
                         seriesDefaults: {
@@ -33,42 +45,42 @@
                         ]
                     };
 
-                    $.jqplot('chartdiv', [originalProfileSeries, adjustedProfileSeries], options);
+                    jQuery('#chartdiv').empty();
+                    plot('chartdiv', [originalProfileSeries, adjustedProfileSeries], options);
                 });
             });
         });
 </script>
 
 <div class="content">
-    <table data-bind="if: Analysis">
-        <tr>
-            <td>
-                <table>
-                    <tr>
-                        <td>Distance:</td>
-                        <td data-bind="numericText: Analysis().Distance/1000, precision: 1, units:'km'" />
-                    </tr>
-                    <tr>
-                        <td>Duration:</td>
-                        <td data-bind="timeSpanText: Analysis().Duration" />
-                    </tr>
-                    <tr>
-                        <td>Energy:</td>
-                        <td data-bind="numericText: Analysis().Energy/1000, precision: 0, units:'kJ'" />
-                    </tr>
-                    <tr>
-                        <td>Wind energy:</td>
-                        <td data-bind="numericText: Analysis().WindEnergy / 1000, precision: 0, units: 'kJ'" />
-                    </tr>
-                    <tr>
-                        <td>Wind climb equivalent:</td>
-                        <td data-bind="numericText: Analysis().WindClimbEquivalent, precision: 0, units: 'm'" />
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <div id="chartdiv" style="height:400px;width:600px;"></div>
-            </td>
-        </tr>
-    </table>
+    <div class="pure-g" data-bind="if: Analysis">
+        <div class="pure-u-1-2">
+            <canvas id="wind-widget"></canvas>
+            <table>
+                <tr>
+                    <td>Distance:</td>
+                    <td data-bind="numericText: Analysis().Distance/1000, precision: 1, units:'km'" />
+                </tr>
+                <tr>
+                    <td>Duration:</td>
+                    <td data-bind="timeSpanText: Analysis().Duration" />
+                </tr>
+                <tr>
+                    <td>Energy:</td>
+                    <td data-bind="numericText: Analysis().Energy/1000, precision: 0, units:'kJ'" />
+                </tr>
+                <tr>
+                    <td>Wind energy:</td>
+                    <td data-bind="numericText: Analysis().WindEnergy / 1000, precision: 0, units: 'kJ'" />
+                </tr>
+                <tr>
+                    <td>Wind climb equivalent:</td>
+                    <td data-bind="numericText: Analysis().WindClimbEquivalent, precision: 0, units: 'm'" />
+                </tr>
+            </table>
+        </div>
+        <div class="pure-u-1-2">
+            <div id="chartdiv" style="height:400px;width:600px;"></div>
+        </div>
+    </div>
 </div>

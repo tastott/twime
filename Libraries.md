@@ -5,3 +5,4 @@ Knockout
 sprintf
 bootstrap
 pure css
+jcanvas

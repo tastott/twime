@@ -223,8 +223,13 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\Charts\Chart.js" />
     <Content Include="Scripts\Charts\Chart.min.js" />
+    <Content Include="Scripts\Charts\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\Charts\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\Charts\jqplot.module.js" />
     <Content Include="Scripts\Charts\jquery.jqplot.js" />
     <Content Include="Scripts\Charts\tim.chartutils.js" />
+    <Content Include="Scripts\Drawing\jcanvas.min.js" />
+    <Content Include="Scripts\Drawing\WindWidget.js" />
     <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
