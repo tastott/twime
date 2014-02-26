@@ -254,6 +254,7 @@
     <Content Include="Scripts\tim.ko.extensions.js" />
     <Content Include="Scripts\ViewModels\AnalysesViewModel.js" />
     <Content Include="Scripts\ViewModels\AnalysisViewModel.js" />
+    <Content Include="Scripts\ViewModels\UploadViewModel.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

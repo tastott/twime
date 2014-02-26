@@ -55,11 +55,12 @@ namespace Tim.Twime.Web.Controllers
             return RedirectToAction("Analysis");
         }
 
-        public ActionResult _Upload(RideAnalysisInput input)
+        public ActionResult _Upload(HttpPostedFileBase file)
         {
-            _UploadAndAnalyse(input);
+            var uploadedFile = new UploadedFile(file.FileName, file.InputStream);
+            var guid = _uploadService.UploadGpx(uploadedFile);
 
-            return Json(new { });
+            return Json(new { success = true, guid = guid, filename = uploadedFile.Filename });
         }
 
         public ActionResult Analysis()

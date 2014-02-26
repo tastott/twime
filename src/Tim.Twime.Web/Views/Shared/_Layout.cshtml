@@ -42,9 +42,9 @@
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("Analysis", "Home")">Analysis</a></li>
                     </ul>
-                    <ul data-bind="foreach: Rides">
+                    @*<ul data-bind="foreach: Rides">
                         <li style="font-size: small"><a data-bind="text: Filename, click: $parent.LoadAnalysis(Guid)"></a></li>
-                    </ul>
+                    </ul>*@
                 </div>
             </div>
             <div id="main" role="main">
