@@ -5,8 +5,7 @@
 
     type RideAnalysis =
         {
-            WindSpeed : float<meter/second>;
-            WindBearing : float<radian>;
+            Wind : Wind;
             Mass : float<kilogram>;
             Distance : float<meter>; 
             Duration : System.TimeSpan;

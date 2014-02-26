@@ -1,7 +1,7 @@
 ﻿define(["jquery", "./jcanvas.min"], function (jQuery, jcanvas) {
     return {
-        Draw: function (canvasId, windSpeed, windBearing) {
-            var canvas = jQuery('#' + canvasId);
+        Draw: function (canvas, windSpeed, windBearing) {
+            //var canvas = jQuery('#' + canvasId);
             var diameter = 36;
             var x = 150, y = 100;
             var arrowlength = diameter;
@@ -43,7 +43,7 @@
                 fontSize: 12,
                 fontFamily: 'Verdana, sans-serif',
                 fontStyle: 'bold',
-                text: windSpeed
+                text: windSpeed.toFixed(0)
             });
         }
     };

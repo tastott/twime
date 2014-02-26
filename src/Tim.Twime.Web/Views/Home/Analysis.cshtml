@@ -3,51 +3,12 @@
 }
 
 <script>
-    require(["knockout", "tim.ko.extensions", "ViewModels/AnalysesViewModel", "Drawing/WindWidget", "jquery",
-        "jqplot", "charts/tim.chartutils", "domReady!"],
-        function (ko, koex, AnalysesViewModel, ww, jQuery, plot) {
+    require(["knockout", "tim.ko.extensions", "ViewModels/AnalysesViewModel", "jquery", "domReady!"],
+        function (ko, koex, AnalysesViewModel, jQuery) {
        
-            $.getJSON("/Home/AllRides", function (rides) {
+            jQuery.getJSON("/Home/AllRides", function (rides) {
                 var viewModel = new AnalysesViewModel(rides);
                 ko.applyBindings(viewModel);
-
-                viewModel.Analysis.subscribe(function (analysis) {
-                    ww.Draw('wind-widget', analysis.WindSpeed.toFixed(0), analysis.WindBearing);
-                });
-
-                viewModel.Analysis.subscribe(function (analysis) {
-   
-                    var originalProfileSeries = RideProfileToJqPlotSeries(analysis.RideProfile);
-                    var adjustedProfileSeries = RideProfileToJqPlotSeries(analysis.WindAdjustedRideProfile);
-
-                    var options = {
-                        axes: {
-                            xaxis: {
-                                pad: 0,
-                                label: "Distance (km)",
-                                labelRenderer: plot.CanvasAxisLabelRenderer
-                            },
-                            yaxis: {
-                                label: "Elevation (m)",
-                                labelRenderer: plot.CanvasAxisLabelRenderer
-                            }
-                        },
-                        seriesDefaults: {
-                            markerOptions: {
-                                show: false
-                            }
-                        },
-                        series: [
-                            {
-                                fill: true,
-                                fillAlpha: 0.5
-                            }
-                        ]
-                    };
-
-                    jQuery('#chartdiv').empty();
-                    plot('chartdiv', [originalProfileSeries, adjustedProfileSeries], options);
-                });
             });
         });
 </script>
@@ -55,7 +16,7 @@
 <div class="content">
     <div class="pure-g" data-bind="if: Analysis">
         <div class="pure-u-1-2">
-            <canvas id="wind-widget"></canvas>
+            <canvas data-bind="windWidget: Analysis().Wind"></canvas>
             <table>
                 <tr>
                     <td>Distance:</td>
@@ -80,7 +41,7 @@
             </table>
         </div>
         <div class="pure-u-1-2">
-            <div id="chartdiv" style="height:400px;width:600px;"></div>
+            <div data-bind="rideProfileChart: Analysis()" style="height:400px;width:600px;"></div>
         </div>
     </div>
 </div>

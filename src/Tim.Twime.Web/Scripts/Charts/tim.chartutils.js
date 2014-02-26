@@ -1,8 +1,16 @@
-﻿function RideProfileToJqPlotSeries(profile) {
+﻿define(["jquery"], function (jQuery) {
 
-    var series = $.map(profile, function (point) {
-        return [[point.Distance/1000, point.Elevation]];
-    });
+    return {
+        RideProfileToJqPlotSeries: function (profile) {
 
-    return series;
-}
+            var series = jQuery.map(profile, function (point) {
+                return [[point.Distance / 1000, point.Elevation]];
+            });
+
+            return series;
+        }
+    };
+
+});
+
+

@@ -73,7 +73,7 @@ namespace Tim.Twime.Web.Controllers
             var guid = _uploadService.UploadGpx(uploadedFile);
 
             var ride = _uploadService.GetRide(guid);
-            var analysisRequest = new RideAnalysisRequest(ride, input.WindSpeedMph, input.WindBearingDegrees, input.Mass);
+            var analysisRequest = new RideAnalysisRequest(ride, new Wind(input.WindSpeedMph, input.WindBearingDegrees), input.Mass);
 
             var analysis = _analysisService.Analyse(analysisRequest);
             AnalysisStore[guid] = analysis;

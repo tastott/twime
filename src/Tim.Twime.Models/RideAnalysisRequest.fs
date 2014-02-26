@@ -4,9 +4,12 @@
     open Tim.Geography.Geography
     open Microsoft.FSharp.Data.UnitSystems.SI.UnitNames
 
+    type Wind =
+        { Speed : float<meter/second>;
+          Bearing : float<radian>; }
+
     type RideAnalysisRequest =
         { Ride : Ride;
-          WindSpeed : float<mph>;
-          WindBearingDegrees : float<degree>;
+          Wind : Wind;
           Mass : float<kilogram> }
 
