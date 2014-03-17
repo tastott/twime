@@ -40,6 +40,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -53,6 +65,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,8 +161,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Service References\DataGovUkMetOfficeWeatherService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IWeatherService.cs" />
+    <Compile Include="Services\MetOfficeWeatherService.cs" />
     <Compile Include="ViewModels\RideAnalysisInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Service References\DataGovUkMetOfficeWeatherService\service.edmx" />
     <None Include="Views\Shared\_RidesAndUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -255,7 +281,12 @@
     <Content Include="Scripts\ViewModels\AnalysesViewModel.js" />
     <Content Include="Scripts\ViewModels\AnalysisViewModel.js" />
     <Content Include="Scripts\ViewModels\UploadViewModel.js" />
+    <Content Include="Scripts\ViewModels\WindDataRequestViewModel.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Service References\DataGovUkMetOfficeWeatherService\Reference.datasvcmap">
+      <Generator>DataServicesCoreClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -284,6 +315,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tim.Geography\Tim.Geography.fsproj">
+      <Project>{5860b84a-0a44-4689-8ecf-ec03842a8f5a}</Project>
+      <Name>Tim.Geography</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tim.Twime.DependencyInjection\Tim.Twime.DependencyInjection.csproj">
       <Project>{dde51cc0-33c0-45d4-8373-b5a46da05a52}</Project>
       <Name>Tim.Twime.DependencyInjection</Name>
@@ -296,6 +331,14 @@
       <Project>{1830ca95-2c5f-4972-8fd5-6c00cf87c6e5}</Project>
       <Name>Tim.Twime.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\DataGovUkMetOfficeWeatherService\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

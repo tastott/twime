@@ -1,4 +1,4 @@
-﻿define(["knockout", "jquery"], function (ko, $) {
+﻿define(["knockout", "jquery", "ViewModels/WindDataRequestViewModel"], function (ko, $, WindDataRequestViewModel) {
 
     function progressHandlingFunction(e) {
         if (e.lengthComputable) {
@@ -11,6 +11,14 @@
 
         self.FileGuid = ko.observable();
         self.Filename = ko.observable();
+        self.WindDataRequests = ko.observableArray();
+        self.WindSpeed = ko.observable();
+        self.WindBearing = ko.observable();
+
+        self.SetWind = function (speed, bearing) {
+            self.WindSpeed(speed);
+            self.WindBearing(bearing);
+        }
 
         self.UploadFile = function () {
 
@@ -31,6 +39,9 @@
                 success: function (response) {
                     self.FileGuid(response.guid);
                     self.Filename(response.filename);
+                    
+                    var windDataRequests = $.map(response.windDataTokens, function (token) { return new WindDataRequestViewModel(token); });
+                    self.WindDataRequests(windDataRequests);
                 },
                 //error: errorHandler,
                 // Form data

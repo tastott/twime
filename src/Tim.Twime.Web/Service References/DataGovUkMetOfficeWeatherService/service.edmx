@@ -1,0 +1,147 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:dr="http://schemas.microsoft.com/dallas/2010/04">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+    <Schema Namespace="DataGovUK.MetOfficeWeatherOpenData" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2007/05/edm">
+      <EntityType Name="SignificantWeather">
+        <Key>
+          <PropertyRef Name="Code" />
+        </Key>
+        <Property Name="Code" Type="Edm.Int16" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+      </EntityType>
+      <EntityType Name="Visibility">
+        <Key>
+          <PropertyRef Name="Code" />
+        </Key>
+        <Property Name="Code" Type="Edm.String" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="VisibilityRange" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+      </EntityType>
+      <EntityType Name="ThreeHourlyForecast">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int64" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ForecastSiteCode" Type="Edm.Int32" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="PredictionId" Type="Edm.Guid" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="SiteName" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Country" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Continent" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="StartTime" Type="Edm.Byte" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Day" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Date" Type="Edm.DateTime" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="TimeStep" Type="Edm.Int16" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="SignificantWeatherId" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ScreenTemperature" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindSpeed" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindDirection" Type="Edm.Byte" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindGust" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="VisibilityCode" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="RelativeHumidity" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ProbabilityPrecipitation" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="FeelsLikeTemperature" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="UVIndex" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="PredictionTime" Type="Edm.Byte" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </EntityType>
+      <EntityType Name="DailyForecast">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int64" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ForecastSiteCode" Type="Edm.Int32" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="PredictionId" Type="Edm.Guid" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="SiteName" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Country" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Continent" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="StartTime" Type="Edm.Byte" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Day" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Date" Type="Edm.DateTime" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="TimeStep" Type="Edm.Byte" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="WindDirectionDay" Type="Edm.Byte" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindSpeedDay" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ScreenTemperatureDay" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ScreenTemperatureNight" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="SignificantWeatherIdDay" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindSpeedNight" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindDirectionNight" Type="Edm.Byte" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="SignificantWeatherIdNight" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="RelativeHumidityDay" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="RelativeHumidityNight" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="VisibilityCodeDay" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="VisibilityCodeNight" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindGustDay" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindGustNight" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="FeelsLikeTemperatureDay" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="FeelsLikeTemperatureNight" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="UVIndex" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="PrecipitationProbabilityDay" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="PrecipitationProbabilityNight" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="PredictionTime" Type="Edm.Byte" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </EntityType>
+      <EntityType Name="Observation">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int64" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ForecastSiteCode" Type="Edm.Int32" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ObservationTime" Type="Edm.Int32" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ObservationDate" Type="Edm.DateTime" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="WindDirection" Type="Edm.Byte" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindSpeed" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindGust" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Visibility" Type="Edm.Int32" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ScreenTemperature" Type="Edm.Decimal" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Pressure" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="PressureTendency" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="SignificantWeatherCode" Type="Edm.Int16" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="SiteName" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Latitude" Type="Edm.Decimal" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Longitude" Type="Edm.Decimal" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Region" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Country" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Continent" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+      </EntityType>
+      <EntityType Name="Site">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Latitude" Type="Edm.Decimal" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Longitude" Type="Edm.Decimal" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Region" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Country" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Continent" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+      </EntityType>
+      <EntityType Name="ThreeHourlyForecastArchive">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ForecastSiteCode" Type="Edm.Int32" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="SiteName" Type="Edm.String" Nullable="true" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Country" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="Continent" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="DateTime" Type="Edm.DateTime" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="SignificantWeatherMode" Type="Edm.Int16" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ScreenTemperatureAverage" Type="Edm.Single" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindSpeedAverage" Type="Edm.Single" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindDirectionMode" Type="Edm.Byte" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="WindGustAverage" Type="Edm.Single" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="VisibilityCodeMode" Type="Edm.String" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="RelativeHumidityAverage" Type="Edm.Single" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="ProbabilityPrecipitationAverage" Type="Edm.Single" Nullable="true" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="FeelsLikeTemperatureAverage" Type="Edm.Single" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+        <Property Name="UVIndexAverage" Type="Edm.Single" Nullable="false" dr:Queryable="false" dr:Returned="true" />
+      </EntityType>
+      <EntityContainer Name="DataGovUKMetOfficeWeatherOpenDataContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="SignificantWeather" EntityType="DataGovUK.MetOfficeWeatherOpenData.SignificantWeather" />
+        <EntitySet Name="Visibility" EntityType="DataGovUK.MetOfficeWeatherOpenData.Visibility" />
+        <EntitySet Name="ThreeHourlyForecast" EntityType="DataGovUK.MetOfficeWeatherOpenData.ThreeHourlyForecast" />
+        <EntitySet Name="DailyForecast" EntityType="DataGovUK.MetOfficeWeatherOpenData.DailyForecast" />
+        <EntitySet Name="Observation" EntityType="DataGovUK.MetOfficeWeatherOpenData.Observation" />
+        <EntitySet Name="Site" EntityType="DataGovUK.MetOfficeWeatherOpenData.Site" />
+        <EntitySet Name="ThreeHourlyForecastArchive" EntityType="DataGovUK.MetOfficeWeatherOpenData.ThreeHourlyForecastArchive" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

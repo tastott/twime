@@ -9,9 +9,10 @@ module Geography =
     let EarthRadius = 6371000.<meter>
 
     let EarthDistance (lat1 : float<radian>) (lon1 : float<radian>) (lat2 : float<radian>) (lon2 : float<radian>) =
-        let x = float (lon2-lon1) * cos(float (lat1+lat2)) / 2.
+        let x = float (lon2-lon1) * cos(float (lat1+lat2) / 2.)
         let y = float (lat2-lat1)
-        sqrt (x*x + y*y) * EarthRadius
+        let z = sqrt (x*x + y*y)
+        z * EarthRadius
 
     let EarthDistanceDegrees (lat1 : float<degree>) (lon1 : float<degree>) (lat2 : float<degree>) (lon2 : float<degree>) =
         EarthDistance (DegreesToRadians lat1) (DegreesToRadians lon1) (DegreesToRadians lat2) (DegreesToRadians lon2)

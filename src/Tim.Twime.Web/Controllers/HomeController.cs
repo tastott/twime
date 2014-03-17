@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace Tim.Twime.Web.Controllers
 {
-    using Services;
+    using Twime.Services;
+    using Web.Services;
     using Models;
     using ViewModels;
 
@@ -14,6 +15,7 @@ namespace Tim.Twime.Web.Controllers
     {
         private AnalysisService _analysisService;
         private UploadService _uploadService;
+        private IEnumerable<IWeatherService> _weatherServices;
 
         public IDictionary<Guid, RideAnalysis> AnalysisStore
         {
@@ -30,10 +32,13 @@ namespace Tim.Twime.Web.Controllers
             }
         }
 
-        public HomeController(AnalysisService analysisService, UploadService uploadService)
+        public HomeController(AnalysisService analysisService, 
+            UploadService uploadService,
+            IEnumerable<IWeatherService> weatherServices)
         {
             _analysisService = analysisService;
             _uploadService = uploadService;
+            _weatherServices = weatherServices;
         }
 
         public ActionResult Index()
@@ -60,7 +65,24 @@ namespace Tim.Twime.Web.Controllers
             var uploadedFile = new UploadedFile(file.FileName, file.InputStream);
             var guid = _uploadService.UploadGpx(uploadedFile);
 
-            return Json(new { success = true, guid = guid, filename = uploadedFile.Filename });
+            var rideReceipt = new
+            {
+                success = true,
+                guid = guid,
+                filename = uploadedFile.Filename,
+                windDataTokens = new Guid[]{Guid.NewGuid()}
+            };
+
+            return Json(rideReceipt);
+        }
+
+        public ActionResult _GetWindData(Guid id)
+        {
+            var observationsTask = _weatherServices.First().GetWeatherAsync(51.7433510, -1.2556820, DateTime.Now);
+            observationsTask.Wait();
+            var observations = observationsTask.Result;
+
+            return Json(new { ready = true, siteName = observations.SiteName}, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Analysis()
