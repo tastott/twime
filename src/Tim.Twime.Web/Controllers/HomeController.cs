@@ -78,11 +78,10 @@ namespace Tim.Twime.Web.Controllers
 
         public ActionResult _GetWindData(Guid id)
         {
-            var observationsTask = _weatherServices.First().GetWeatherAsync(51.7433510, -1.2556820, DateTime.Now);
-            observationsTask.Wait();
-            var observations = observationsTask.Result;
+            var observation = _weatherServices.First().GetWeather(51.7433510, -1.2556820, DateTime.Today);
+            string status = observation == null ? "no data" : "success";
 
-            return Json(new { ready = true, siteName = observations.SiteName}, JsonRequestBehavior.AllowGet);
+            return Json(new { status = status, observation = observation}, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Analysis()

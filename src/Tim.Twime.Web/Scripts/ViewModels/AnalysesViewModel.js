@@ -1,12 +1,7 @@
 ﻿define(["knockout", "ViewModels/AnalysisViewModel", "jqplot", "charts/tim.chartutils", "Drawing/WindWidget"],
     function (ko, AnalysisViewModel, jqplot, chartutils, ww) {
 
-        ko.bindingHandlers.windWidget = {
-            update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                var wind = valueAccessor();
-                ww.Draw(jQuery(element), wind.Speed, wind.Bearing);
-            }
-        };
+       
 
         ko.bindingHandlers.rideProfileChart = {
             update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {

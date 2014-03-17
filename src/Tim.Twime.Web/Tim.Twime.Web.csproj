@@ -287,7 +287,9 @@
       <Generator>DataServicesCoreClientGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -330,6 +332,10 @@
     <ProjectReference Include="..\Tim.Twime.Services\Tim.Twime.Services.csproj">
       <Project>{1830ca95-2c5f-4972-8fd5-6c00cf87c6e5}</Project>
       <Name>Tim.Twime.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tim.Units\Tim.Units.fsproj">
+      <Project>{e71e2f5f-3c98-4163-a2eb-c9920bb40af8}</Project>
+      <Name>Tim.Units</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

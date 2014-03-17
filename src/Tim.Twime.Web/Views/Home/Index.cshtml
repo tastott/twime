@@ -42,7 +42,10 @@
         </div>
         <div class="pure-u-1-2">
             <ul data-bind="foreach: WindDataRequests">
-                <li><a href="#" data-bind="click: $parent.SetWind(Speed(), Bearing())"><span data-bind="text: SiteName" />,<span data-bind="text: Bearing"/></a></li>
+                <li>
+                    <a href="#"><span data-bind="text: SiteName"></span></a>>
+                    <canvas data-bind="windWidget: Wind()" />
+                </li>
             </ul>
         </div>
     </div>

@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Tim.Twime.Web.Services
 {
-    public class WeatherObservations
+    public class WeatherObservation
     {
         public string SiteName { get; set; }
+        public double LatitudeDegrees { get; set; }
+        public double LongitudeDegrees { get; set; }
+        public double WindSpeedMps { get; set; }
+        public double WindBearingRadians { get; set; }
+
     }
 
     public interface IWeatherService
     {
-        Task<WeatherObservations> GetWeatherAsync(double latitude, double longitude, DateTime dateTime);
+        WeatherObservation GetWeather(double latitude, double longitude, DateTime dateTime);
     }
 }
