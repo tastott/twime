@@ -10,6 +10,7 @@ namespace Tim.Twime.DependencyInjection
     using Services;
     using Cycling;
     using ImportExport;
+    using Services.Weather;
 
     public class TwimeDependencyModule : NinjectModule
     {
@@ -17,8 +18,12 @@ namespace Tim.Twime.DependencyInjection
         {
             Bind<UploadService>().ToSelf().InSingletonScope();
             Bind<AnalysisService>().ToSelf().InSingletonScope();
+            Bind<WeatherService>().ToSelf().InSingletonScope();
+
             Bind<Importer>().ToSelf();
             Bind<RideAnalyser>().ToSelf();
+            //Bind<IWeatherDataProvider>().To<MetOfficeWeatherDataProvider>();
+            Bind<IWeatherDataProvider>().To<MockWeatherDataProvider>();
         }
     }
 }

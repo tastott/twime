@@ -10,6 +10,7 @@
             });
 
         self.SiteName = ko.observable();
+        self.Source = ko.observable();
 
         self.Update = function () {
 
@@ -18,10 +19,10 @@
                 if (response.status == "success") {
 
                     self.SiteName(response.observation.SiteName);
-                    
+                    self.Source(response.observation.Source);
                     //self.Wind().Speed = response.observation.WindSpeedMps;
                     //self.Wind().Bearing = response.observation.WindBearingRadians;
-                    self.Wind({ Speed: response.observation.WindSpeedMps, Bearing: response.observation.WindBearingRadians });
+                    self.Wind({ Speed: response.observation.WindSpeed, Bearing: response.observation.WindBearing });
                     //self.Bearing(response.bearing);
                 }
 

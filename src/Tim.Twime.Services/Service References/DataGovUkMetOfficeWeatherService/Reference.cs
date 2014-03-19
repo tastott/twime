@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 18/03/2014 20:15:34
-namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
+// Generation date: 18/03/2014 20:16:37
+namespace Tim.Twime.Services.DataGovUkMetOfficeWeatherService
 {
     
     /// <summary>
@@ -40,7 +40,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
         {
             if (typeName.StartsWith("DataGovUK.MetOfficeWeatherOpenData", global::System.StringComparison.Ordinal))
             {
-                return this.GetType().Assembly.GetType(string.Concat("Tim.Twime.Web.DataGovUkMetOfficeWeatherService", typeName.Substring(34)), false);
+                return this.GetType().Assembly.GetType(string.Concat("Tim.Twime.Services.DataGovUkMetOfficeWeatherService", typeName.Substring(34)), false);
             }
             return null;
         }
@@ -52,7 +52,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            if (clientType.Namespace.Equals("Tim.Twime.Web.DataGovUkMetOfficeWeatherService", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("Tim.Twime.Services.DataGovUkMetOfficeWeatherService", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("DataGovUK.MetOfficeWeatherOpenData.", clientType.Name);
             }
@@ -240,8 +240,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// Code
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("SignificantWeather")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("Code")]
-    public partial class SignificantWeather
+    public partial class SignificantWeather : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new SignificantWeather object.
@@ -269,6 +270,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCodeChanging(value);
                 this._Code = value;
                 this.OnCodeChanged();
+                this.OnPropertyChanged("Code");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -290,12 +292,23 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDescriptionChanging(value);
                 this._Description = value;
                 this.OnDescriptionChanged();
+                this.OnPropertyChanged("Description");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private string _Description;
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
     /// <summary>
     /// There are no comments for DataGovUK.MetOfficeWeatherOpenData.Visibility in the schema.
@@ -303,8 +316,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// Code
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Visibility")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("Code")]
-    public partial class Visibility
+    public partial class Visibility : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new Visibility object.
@@ -332,6 +346,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCodeChanging(value);
                 this._Code = value;
                 this.OnCodeChanged();
+                this.OnPropertyChanged("Code");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -353,6 +368,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnVisibilityRangeChanging(value);
                 this._VisibilityRange = value;
                 this.OnVisibilityRangeChanged();
+                this.OnPropertyChanged("VisibilityRange");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -374,12 +390,23 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDescriptionChanging(value);
                 this._Description = value;
                 this.OnDescriptionChanged();
+                this.OnPropertyChanged("Description");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private string _Description;
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
     /// <summary>
     /// There are no comments for DataGovUK.MetOfficeWeatherOpenData.ThreeHourlyForecast in the schema.
@@ -387,8 +414,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("ThreeHourlyForecast")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
-    public partial class ThreeHourlyForecast
+    public partial class ThreeHourlyForecast : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new ThreeHourlyForecast object.
@@ -444,6 +472,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnIDChanging(value);
                 this._ID = value;
                 this.OnIDChanged();
+                this.OnPropertyChanged("ID");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -465,6 +494,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnForecastSiteCodeChanging(value);
                 this._ForecastSiteCode = value;
                 this.OnForecastSiteCodeChanged();
+                this.OnPropertyChanged("ForecastSiteCode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -486,6 +516,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPredictionIdChanging(value);
                 this._PredictionId = value;
                 this.OnPredictionIdChanged();
+                this.OnPropertyChanged("PredictionId");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -507,6 +538,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSiteNameChanging(value);
                 this._SiteName = value;
                 this.OnSiteNameChanged();
+                this.OnPropertyChanged("SiteName");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -528,6 +560,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCountryChanging(value);
                 this._Country = value;
                 this.OnCountryChanged();
+                this.OnPropertyChanged("Country");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -549,6 +582,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnContinentChanging(value);
                 this._Continent = value;
                 this.OnContinentChanged();
+                this.OnPropertyChanged("Continent");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -570,6 +604,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnStartTimeChanging(value);
                 this._StartTime = value;
                 this.OnStartTimeChanged();
+                this.OnPropertyChanged("StartTime");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -591,6 +626,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDayChanging(value);
                 this._Day = value;
                 this.OnDayChanged();
+                this.OnPropertyChanged("Day");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -612,6 +648,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDateChanging(value);
                 this._Date = value;
                 this.OnDateChanged();
+                this.OnPropertyChanged("Date");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -633,6 +670,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnTimeStepChanging(value);
                 this._TimeStep = value;
                 this.OnTimeStepChanged();
+                this.OnPropertyChanged("TimeStep");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -654,6 +692,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSignificantWeatherIdChanging(value);
                 this._SignificantWeatherId = value;
                 this.OnSignificantWeatherIdChanged();
+                this.OnPropertyChanged("SignificantWeatherId");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -675,6 +714,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnScreenTemperatureChanging(value);
                 this._ScreenTemperature = value;
                 this.OnScreenTemperatureChanged();
+                this.OnPropertyChanged("ScreenTemperature");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -696,6 +736,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindSpeedChanging(value);
                 this._WindSpeed = value;
                 this.OnWindSpeedChanged();
+                this.OnPropertyChanged("WindSpeed");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -717,6 +758,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindDirectionChanging(value);
                 this._WindDirection = value;
                 this.OnWindDirectionChanged();
+                this.OnPropertyChanged("WindDirection");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -738,6 +780,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindGustChanging(value);
                 this._WindGust = value;
                 this.OnWindGustChanged();
+                this.OnPropertyChanged("WindGust");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -759,6 +802,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnVisibilityCodeChanging(value);
                 this._VisibilityCode = value;
                 this.OnVisibilityCodeChanged();
+                this.OnPropertyChanged("VisibilityCode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -780,6 +824,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnRelativeHumidityChanging(value);
                 this._RelativeHumidity = value;
                 this.OnRelativeHumidityChanged();
+                this.OnPropertyChanged("RelativeHumidity");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -801,6 +846,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnProbabilityPrecipitationChanging(value);
                 this._ProbabilityPrecipitation = value;
                 this.OnProbabilityPrecipitationChanged();
+                this.OnPropertyChanged("ProbabilityPrecipitation");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -822,6 +868,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnFeelsLikeTemperatureChanging(value);
                 this._FeelsLikeTemperature = value;
                 this.OnFeelsLikeTemperatureChanged();
+                this.OnPropertyChanged("FeelsLikeTemperature");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -843,6 +890,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnUVIndexChanging(value);
                 this._UVIndex = value;
                 this.OnUVIndexChanged();
+                this.OnPropertyChanged("UVIndex");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -864,12 +912,23 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPredictionTimeChanging(value);
                 this._PredictionTime = value;
                 this.OnPredictionTimeChanged();
+                this.OnPropertyChanged("PredictionTime");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private byte _PredictionTime;
         partial void OnPredictionTimeChanging(byte value);
         partial void OnPredictionTimeChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
     /// <summary>
     /// There are no comments for DataGovUK.MetOfficeWeatherOpenData.DailyForecast in the schema.
@@ -877,8 +936,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("DailyForecast")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
-    public partial class DailyForecast
+    public partial class DailyForecast : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new DailyForecast object.
@@ -970,6 +1030,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnIDChanging(value);
                 this._ID = value;
                 this.OnIDChanged();
+                this.OnPropertyChanged("ID");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -991,6 +1052,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnForecastSiteCodeChanging(value);
                 this._ForecastSiteCode = value;
                 this.OnForecastSiteCodeChanged();
+                this.OnPropertyChanged("ForecastSiteCode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1012,6 +1074,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPredictionIdChanging(value);
                 this._PredictionId = value;
                 this.OnPredictionIdChanged();
+                this.OnPropertyChanged("PredictionId");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1033,6 +1096,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSiteNameChanging(value);
                 this._SiteName = value;
                 this.OnSiteNameChanged();
+                this.OnPropertyChanged("SiteName");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1054,6 +1118,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCountryChanging(value);
                 this._Country = value;
                 this.OnCountryChanged();
+                this.OnPropertyChanged("Country");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1075,6 +1140,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnContinentChanging(value);
                 this._Continent = value;
                 this.OnContinentChanged();
+                this.OnPropertyChanged("Continent");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1096,6 +1162,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnStartTimeChanging(value);
                 this._StartTime = value;
                 this.OnStartTimeChanged();
+                this.OnPropertyChanged("StartTime");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1117,6 +1184,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDayChanging(value);
                 this._Day = value;
                 this.OnDayChanged();
+                this.OnPropertyChanged("Day");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1138,6 +1206,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDateChanging(value);
                 this._Date = value;
                 this.OnDateChanged();
+                this.OnPropertyChanged("Date");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1159,6 +1228,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnTimeStepChanging(value);
                 this._TimeStep = value;
                 this.OnTimeStepChanged();
+                this.OnPropertyChanged("TimeStep");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1180,6 +1250,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindDirectionDayChanging(value);
                 this._WindDirectionDay = value;
                 this.OnWindDirectionDayChanged();
+                this.OnPropertyChanged("WindDirectionDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1201,6 +1272,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindSpeedDayChanging(value);
                 this._WindSpeedDay = value;
                 this.OnWindSpeedDayChanged();
+                this.OnPropertyChanged("WindSpeedDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1222,6 +1294,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnScreenTemperatureDayChanging(value);
                 this._ScreenTemperatureDay = value;
                 this.OnScreenTemperatureDayChanged();
+                this.OnPropertyChanged("ScreenTemperatureDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1243,6 +1316,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnScreenTemperatureNightChanging(value);
                 this._ScreenTemperatureNight = value;
                 this.OnScreenTemperatureNightChanged();
+                this.OnPropertyChanged("ScreenTemperatureNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1264,6 +1338,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSignificantWeatherIdDayChanging(value);
                 this._SignificantWeatherIdDay = value;
                 this.OnSignificantWeatherIdDayChanged();
+                this.OnPropertyChanged("SignificantWeatherIdDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1285,6 +1360,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindSpeedNightChanging(value);
                 this._WindSpeedNight = value;
                 this.OnWindSpeedNightChanged();
+                this.OnPropertyChanged("WindSpeedNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1306,6 +1382,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindDirectionNightChanging(value);
                 this._WindDirectionNight = value;
                 this.OnWindDirectionNightChanged();
+                this.OnPropertyChanged("WindDirectionNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1327,6 +1404,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSignificantWeatherIdNightChanging(value);
                 this._SignificantWeatherIdNight = value;
                 this.OnSignificantWeatherIdNightChanged();
+                this.OnPropertyChanged("SignificantWeatherIdNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1348,6 +1426,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnRelativeHumidityDayChanging(value);
                 this._RelativeHumidityDay = value;
                 this.OnRelativeHumidityDayChanged();
+                this.OnPropertyChanged("RelativeHumidityDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1369,6 +1448,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnRelativeHumidityNightChanging(value);
                 this._RelativeHumidityNight = value;
                 this.OnRelativeHumidityNightChanged();
+                this.OnPropertyChanged("RelativeHumidityNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1390,6 +1470,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnVisibilityCodeDayChanging(value);
                 this._VisibilityCodeDay = value;
                 this.OnVisibilityCodeDayChanged();
+                this.OnPropertyChanged("VisibilityCodeDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1411,6 +1492,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnVisibilityCodeNightChanging(value);
                 this._VisibilityCodeNight = value;
                 this.OnVisibilityCodeNightChanged();
+                this.OnPropertyChanged("VisibilityCodeNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1432,6 +1514,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindGustDayChanging(value);
                 this._WindGustDay = value;
                 this.OnWindGustDayChanged();
+                this.OnPropertyChanged("WindGustDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1453,6 +1536,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindGustNightChanging(value);
                 this._WindGustNight = value;
                 this.OnWindGustNightChanged();
+                this.OnPropertyChanged("WindGustNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1474,6 +1558,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnFeelsLikeTemperatureDayChanging(value);
                 this._FeelsLikeTemperatureDay = value;
                 this.OnFeelsLikeTemperatureDayChanged();
+                this.OnPropertyChanged("FeelsLikeTemperatureDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1495,6 +1580,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnFeelsLikeTemperatureNightChanging(value);
                 this._FeelsLikeTemperatureNight = value;
                 this.OnFeelsLikeTemperatureNightChanged();
+                this.OnPropertyChanged("FeelsLikeTemperatureNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1516,6 +1602,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnUVIndexChanging(value);
                 this._UVIndex = value;
                 this.OnUVIndexChanged();
+                this.OnPropertyChanged("UVIndex");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1537,6 +1624,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPrecipitationProbabilityDayChanging(value);
                 this._PrecipitationProbabilityDay = value;
                 this.OnPrecipitationProbabilityDayChanged();
+                this.OnPropertyChanged("PrecipitationProbabilityDay");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1558,6 +1646,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPrecipitationProbabilityNightChanging(value);
                 this._PrecipitationProbabilityNight = value;
                 this.OnPrecipitationProbabilityNightChanged();
+                this.OnPropertyChanged("PrecipitationProbabilityNight");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1579,12 +1668,23 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPredictionTimeChanging(value);
                 this._PredictionTime = value;
                 this.OnPredictionTimeChanged();
+                this.OnPropertyChanged("PredictionTime");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private byte _PredictionTime;
         partial void OnPredictionTimeChanging(byte value);
         partial void OnPredictionTimeChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
     /// <summary>
     /// There are no comments for DataGovUK.MetOfficeWeatherOpenData.Observation in the schema.
@@ -1592,8 +1692,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Observation")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
-    public partial class Observation
+    public partial class Observation : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new Observation object.
@@ -1621,6 +1722,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnIDChanging(value);
                 this._ID = value;
                 this.OnIDChanged();
+                this.OnPropertyChanged("ID");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1642,6 +1744,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnForecastSiteCodeChanging(value);
                 this._ForecastSiteCode = value;
                 this.OnForecastSiteCodeChanged();
+                this.OnPropertyChanged("ForecastSiteCode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1663,6 +1766,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnObservationTimeChanging(value);
                 this._ObservationTime = value;
                 this.OnObservationTimeChanged();
+                this.OnPropertyChanged("ObservationTime");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1684,6 +1788,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnObservationDateChanging(value);
                 this._ObservationDate = value;
                 this.OnObservationDateChanged();
+                this.OnPropertyChanged("ObservationDate");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1705,6 +1810,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindDirectionChanging(value);
                 this._WindDirection = value;
                 this.OnWindDirectionChanged();
+                this.OnPropertyChanged("WindDirection");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1726,6 +1832,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindSpeedChanging(value);
                 this._WindSpeed = value;
                 this.OnWindSpeedChanged();
+                this.OnPropertyChanged("WindSpeed");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1747,6 +1854,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindGustChanging(value);
                 this._WindGust = value;
                 this.OnWindGustChanged();
+                this.OnPropertyChanged("WindGust");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1768,6 +1876,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnVisibilityChanging(value);
                 this._Visibility = value;
                 this.OnVisibilityChanged();
+                this.OnPropertyChanged("Visibility");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1789,6 +1898,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnScreenTemperatureChanging(value);
                 this._ScreenTemperature = value;
                 this.OnScreenTemperatureChanged();
+                this.OnPropertyChanged("ScreenTemperature");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1810,6 +1920,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPressureChanging(value);
                 this._Pressure = value;
                 this.OnPressureChanged();
+                this.OnPropertyChanged("Pressure");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1831,6 +1942,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnPressureTendencyChanging(value);
                 this._PressureTendency = value;
                 this.OnPressureTendencyChanged();
+                this.OnPropertyChanged("PressureTendency");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1852,6 +1964,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSignificantWeatherCodeChanging(value);
                 this._SignificantWeatherCode = value;
                 this.OnSignificantWeatherCodeChanged();
+                this.OnPropertyChanged("SignificantWeatherCode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1873,6 +1986,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSiteNameChanging(value);
                 this._SiteName = value;
                 this.OnSiteNameChanged();
+                this.OnPropertyChanged("SiteName");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1894,6 +2008,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnLatitudeChanging(value);
                 this._Latitude = value;
                 this.OnLatitudeChanged();
+                this.OnPropertyChanged("Latitude");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1915,6 +2030,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnLongitudeChanging(value);
                 this._Longitude = value;
                 this.OnLongitudeChanged();
+                this.OnPropertyChanged("Longitude");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1936,6 +2052,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnRegionChanging(value);
                 this._Region = value;
                 this.OnRegionChanged();
+                this.OnPropertyChanged("Region");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1957,6 +2074,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCountryChanging(value);
                 this._Country = value;
                 this.OnCountryChanged();
+                this.OnPropertyChanged("Country");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1978,12 +2096,23 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnContinentChanging(value);
                 this._Continent = value;
                 this.OnContinentChanged();
+                this.OnPropertyChanged("Continent");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private string _Continent;
         partial void OnContinentChanging(string value);
         partial void OnContinentChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
     /// <summary>
     /// There are no comments for DataGovUK.MetOfficeWeatherOpenData.Site in the schema.
@@ -1991,8 +2120,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Site")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
-    public partial class Site
+    public partial class Site : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new Site object.
@@ -2020,6 +2150,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnIDChanging(value);
                 this._ID = value;
                 this.OnIDChanged();
+                this.OnPropertyChanged("ID");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2041,6 +2172,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnNameChanging(value);
                 this._Name = value;
                 this.OnNameChanged();
+                this.OnPropertyChanged("Name");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2062,6 +2194,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnLatitudeChanging(value);
                 this._Latitude = value;
                 this.OnLatitudeChanged();
+                this.OnPropertyChanged("Latitude");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2083,6 +2216,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnLongitudeChanging(value);
                 this._Longitude = value;
                 this.OnLongitudeChanged();
+                this.OnPropertyChanged("Longitude");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2104,6 +2238,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnRegionChanging(value);
                 this._Region = value;
                 this.OnRegionChanged();
+                this.OnPropertyChanged("Region");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2125,6 +2260,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCountryChanging(value);
                 this._Country = value;
                 this.OnCountryChanged();
+                this.OnPropertyChanged("Country");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2146,12 +2282,23 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnContinentChanging(value);
                 this._Continent = value;
                 this.OnContinentChanged();
+                this.OnPropertyChanged("Continent");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private string _Continent;
         partial void OnContinentChanging(string value);
         partial void OnContinentChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
     /// <summary>
     /// There are no comments for DataGovUK.MetOfficeWeatherOpenData.ThreeHourlyForecastArchive in the schema.
@@ -2159,8 +2306,9 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("ThreeHourlyForecastArchive")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class ThreeHourlyForecastArchive
+    public partial class ThreeHourlyForecastArchive : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
         /// Create a new ThreeHourlyForecastArchive object.
@@ -2208,6 +2356,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnIdChanging(value);
                 this._Id = value;
                 this.OnIdChanged();
+                this.OnPropertyChanged("Id");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2229,6 +2378,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnForecastSiteCodeChanging(value);
                 this._ForecastSiteCode = value;
                 this.OnForecastSiteCodeChanged();
+                this.OnPropertyChanged("ForecastSiteCode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2250,6 +2400,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSiteNameChanging(value);
                 this._SiteName = value;
                 this.OnSiteNameChanged();
+                this.OnPropertyChanged("SiteName");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2271,6 +2422,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnCountryChanging(value);
                 this._Country = value;
                 this.OnCountryChanged();
+                this.OnPropertyChanged("Country");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2292,6 +2444,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnContinentChanging(value);
                 this._Continent = value;
                 this.OnContinentChanged();
+                this.OnPropertyChanged("Continent");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2313,6 +2466,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnDateTimeChanging(value);
                 this._DateTime = value;
                 this.OnDateTimeChanged();
+                this.OnPropertyChanged("DateTime");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2334,6 +2488,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnSignificantWeatherModeChanging(value);
                 this._SignificantWeatherMode = value;
                 this.OnSignificantWeatherModeChanged();
+                this.OnPropertyChanged("SignificantWeatherMode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2355,6 +2510,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnScreenTemperatureAverageChanging(value);
                 this._ScreenTemperatureAverage = value;
                 this.OnScreenTemperatureAverageChanged();
+                this.OnPropertyChanged("ScreenTemperatureAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2376,6 +2532,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindSpeedAverageChanging(value);
                 this._WindSpeedAverage = value;
                 this.OnWindSpeedAverageChanged();
+                this.OnPropertyChanged("WindSpeedAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2397,6 +2554,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindDirectionModeChanging(value);
                 this._WindDirectionMode = value;
                 this.OnWindDirectionModeChanged();
+                this.OnPropertyChanged("WindDirectionMode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2418,6 +2576,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnWindGustAverageChanging(value);
                 this._WindGustAverage = value;
                 this.OnWindGustAverageChanged();
+                this.OnPropertyChanged("WindGustAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2439,6 +2598,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnVisibilityCodeModeChanging(value);
                 this._VisibilityCodeMode = value;
                 this.OnVisibilityCodeModeChanged();
+                this.OnPropertyChanged("VisibilityCodeMode");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2460,6 +2620,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnRelativeHumidityAverageChanging(value);
                 this._RelativeHumidityAverage = value;
                 this.OnRelativeHumidityAverageChanged();
+                this.OnPropertyChanged("RelativeHumidityAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2481,6 +2642,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnProbabilityPrecipitationAverageChanging(value);
                 this._ProbabilityPrecipitationAverage = value;
                 this.OnProbabilityPrecipitationAverageChanged();
+                this.OnPropertyChanged("ProbabilityPrecipitationAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2502,6 +2664,7 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnFeelsLikeTemperatureAverageChanging(value);
                 this._FeelsLikeTemperatureAverage = value;
                 this.OnFeelsLikeTemperatureAverageChanged();
+                this.OnPropertyChanged("FeelsLikeTemperatureAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2523,11 +2686,22 @@ namespace Tim.Twime.Web.DataGovUkMetOfficeWeatherService
                 this.OnUVIndexAverageChanging(value);
                 this._UVIndexAverage = value;
                 this.OnUVIndexAverageChanged();
+                this.OnPropertyChanged("UVIndexAverage");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private float _UVIndexAverage;
         partial void OnUVIndexAverageChanging(float value);
         partial void OnUVIndexAverageChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
     }
 }

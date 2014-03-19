@@ -48,6 +48,8 @@
     <Compile Include="UploadedFile.fs" />
     <Compile Include="RideAnalysisRequest.fs" />
     <Compile Include="RideAnalysis.fs" />
+    <Compile Include="WeatherObservation.fs" />
+    <Compile Include="Assertion.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tim.Geography\Tim.Geography.fsproj">

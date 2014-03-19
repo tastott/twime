@@ -3,8 +3,11 @@
     function draw(canvas, windSpeed, windBearing) {
         //var canvas = jQuery('#' + canvasId);
         var diameter = 36;
-        var x = 150, y = 100;
+        var x = diameter, y = diameter;
         var arrowlength = diameter;
+
+        canvas.attr('width', diameter * 2.5);
+        canvas.attr('height', diameter * 2.5);
 
         canvas.clearCanvas();
 
@@ -50,7 +53,7 @@
     ko.bindingHandlers.windWidget = {
         update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
             var wind = valueAccessor();
-            if(wind.Speed && wind.Bearing) draw(jQuery(element), wind.Speed, wind.Bearing);
+            if(wind.Speed !=undefined && wind.Bearing !=undefined) draw(jQuery(element), wind.Speed, wind.Bearing);
         }
     };
 

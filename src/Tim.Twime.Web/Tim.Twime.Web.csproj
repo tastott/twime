@@ -166,11 +166,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\IWeatherService.cs" />
-    <Compile Include="Services\MetOfficeWeatherService.cs" />
     <Compile Include="ViewModels\RideAnalysisInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Service References\DataGovUkMetOfficeWeatherService\service.edmx" />
+    <None Include="Service References\DataGovUkMetOfficeWeatherService\service.edmx" />
     <None Include="Views\Shared\_RidesAndUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +181,7 @@
     <Content Include="Content\pure\pure-min.css" />
     <Content Include="Content\pure\side-menu-old-ie.css" />
     <Content Include="Content\pure\side-menu.css" />
+    <Content Include="Content\twime.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -283,10 +282,10 @@
     <Content Include="Scripts\ViewModels\UploadViewModel.js" />
     <Content Include="Scripts\ViewModels\WindDataRequestViewModel.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Service References\DataGovUkMetOfficeWeatherService\Reference.datasvcmap">
+    <None Include="Service References\DataGovUkMetOfficeWeatherService\Reference.datasvcmap">
       <Generator>DataServicesCoreClientGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

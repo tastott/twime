@@ -20,13 +20,13 @@ namespace Tim.Twime.Services
             _rides = new Dictionary<Guid, Ride>();
         }
 
-        public Guid UploadGpx(UploadedFile file)
+        public Ride UploadGpx(UploadedFile file)
         {
-            var guid = Guid.NewGuid();
+            var ride = new Ride(Guid.NewGuid(), _importer.GetWaypointsFromGpxFile(file.Content).ToArray(), file.Filename);
 
-            _rides[guid] = new Ride(guid, _importer.GetWaypointsFromGpxFile(file.Content).ToArray(), file.Filename);
+            _rides[ride.Guid] = ride;
 
-            return guid;
+            return ride;
         }
 
         public Ride GetRide(Guid guid)

@@ -57,8 +57,6 @@ namespace Tim.Twime.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load<TwimeDependencyModule>();
-            kernel.Bind<Services.IWeatherService>().To<Services.MetOfficeWeatherService>();
-  
             kernel.Bind<HomeController>().ToSelf();
         }        
     }

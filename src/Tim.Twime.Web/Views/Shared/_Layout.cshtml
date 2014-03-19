@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/pure")
+    @Styles.Render("~/Content/twime")
     <link rel="stylesheet" type="text/css" href="~/Content/jqPlot/jquery.jqplot.css" />
     @Scripts.Render("~/bundles/modernizr")
     <script>
@@ -42,9 +43,6 @@
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("Analysis", "Home")">Analysis</a></li>
                     </ul>
-                    @*<ul data-bind="foreach: Rides">
-                        <li style="font-size: small"><a data-bind="text: Filename, click: $parent.LoadAnalysis(Guid)"></a></li>
-                    </ul>*@
                 </div>
             </div>
             <div id="main" role="main">

@@ -7,9 +7,9 @@ namespace Tim.Twime.Web.ViewModels
 {
     public class RideAnalysisInput
     {
-        public HttpPostedFileBase File { get; set; }
-        public int WindSpeedMph { get; set; }
-        public int WindBearingDegrees { get; set; }
+        public Guid RideId { get; set; }
+        public int WindSpeed { get; set; }
+        public int WindBearing { get; set; }
         public int Mass { get; set; }
     }
 }

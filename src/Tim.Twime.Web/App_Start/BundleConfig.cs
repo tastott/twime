@@ -56,6 +56,9 @@ namespace Tim.Twime.Web
 
             bundles.Add(new ScriptBundle("~/bundles/requirejs").Include(
                 "~/Scripts/require.js"));
+
+            bundles.Add(new StyleBundle("~/Content/twime").Include(
+                "~/Content/twime.css"));
         }
     }
 }

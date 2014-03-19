@@ -32,19 +32,28 @@
     </div>
      <div class="pure-g" data-bind="if: FileGuid()">
         <div class="pure-u-1-2">
-            <form class="pure-form pure-form-stacked">
+            <form class="pure-form pure-form-stacked" action="/Home/Analyse">
                 <label for="WindSpeedMph">Wind speed</label>
-                <input type="number" name="Input.WindSpeedMph" placeholder="Wind speed in mph" data-bind="value: WindSpeed"/>
+                <input type="number" name="WindSpeed" placeholder="Wind speed in mph" data-bind="value: WindSpeed"/>
 
                 <label for="WindBearingDegrees">Wind bearing</label>
-                <input type="number" name="Input.WindBearingDegrees" placeholder="Wind bearing in degrees" data-bind="value: WindBearing"/>
+                <input type="number" name="WindBearing" placeholder="Wind bearing in degrees" data-bind="value: WindBearing"/>
+
+                <input type="hidden" name="RideId" data-bind="value: FileGuid" />
+
+                <button type="submit" role="button">Analyse</button>
             </form>
         </div>
         <div class="pure-u-1-2">
             <ul data-bind="foreach: WindDataRequests">
-                <li>
-                    <a href="#"><span data-bind="text: SiteName"></span></a>>
-                    <canvas data-bind="windWidget: Wind()" />
+                <li style="list-style: none">
+                    <div class="pure-g hoverable" data-bind="click: $parent.SetWind(Wind().Speed, Wind().Bearing)">
+                        <div class="pure-u-1-4" data-bind="text: Source"></div>
+                        <div class="pure-u-1-4" data-bind="text: SiteName"></div>
+                        <div class="pure-u-1-4">
+                            <canvas data-bind="windWidget: Wind()"></canvas>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

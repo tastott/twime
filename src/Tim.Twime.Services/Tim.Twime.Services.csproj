@@ -30,8 +30,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,10 +58,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisService.cs" />
+    <Compile Include="Service References\DataGovUkMetOfficeWeatherService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\IWeatherDataProvider.cs" />
+    <Compile Include="Weather\MetOfficeWeatherDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UploadService.cs" />
+    <Compile Include="Weather\MockWeatherDataProvider.cs" />
+    <Compile Include="Weather\WeatherService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tim.Geography\Tim.Geography.fsproj">
+      <Project>{5860b84a-0a44-4689-8ecf-ec03842a8f5a}</Project>
+      <Name>Tim.Geography</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tim.Twime.Cycling\Tim.Twime.Cycling.fsproj">
       <Project>{bb589fdb-0801-4ffb-80f9-a83aa332f9b3}</Project>
       <Name>Tim.Twime.Cycling</Name>
@@ -56,6 +87,28 @@
       <Project>{41b35659-c79f-4a5b-9f3f-4c77be9ce595}</Project>
       <Name>Tim.Twime.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tim.Units\Tim.Units.fsproj">
+      <Project>{e71e2f5f-3c98-4163-a2eb-c9920bb40af8}</Project>
+      <Name>Tim.Units</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\DataGovUkMetOfficeWeatherService\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Service References\DataGovUkMetOfficeWeatherService\service.edmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DataGovUkMetOfficeWeatherService\Reference.datasvcmap">
+      <Generator>DataServicesCoreClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

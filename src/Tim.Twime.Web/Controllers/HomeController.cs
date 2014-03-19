@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace Tim.Twime.Web.Controllers
 {
     using Twime.Services;
-    using Web.Services;
+    using Twime.Services.Weather;
     using Models;
     using ViewModels;
 
@@ -15,7 +15,7 @@ namespace Tim.Twime.Web.Controllers
     {
         private AnalysisService _analysisService;
         private UploadService _uploadService;
-        private IEnumerable<IWeatherService> _weatherServices;
+        private WeatherService _weatherService;
 
         public IDictionary<Guid, RideAnalysis> AnalysisStore
         {
@@ -34,11 +34,11 @@ namespace Tim.Twime.Web.Controllers
 
         public HomeController(AnalysisService analysisService, 
             UploadService uploadService,
-            IEnumerable<IWeatherService> weatherServices)
+            WeatherService weatherService)
         {
             _analysisService = analysisService;
             _uploadService = uploadService;
-            _weatherServices = weatherServices;
+            _weatherService = weatherService;
         }
 
         public ActionResult Index()
@@ -53,24 +53,18 @@ namespace Tim.Twime.Web.Controllers
             return Json(rides, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult UploadAndAnalyse(RideAnalysisInput input)
-        {
-            _UploadAndAnalyse(input);
-
-            return RedirectToAction("Analysis");
-        }
-
         public ActionResult _Upload(HttpPostedFileBase file)
         {
             var uploadedFile = new UploadedFile(file.FileName, file.InputStream);
-            var guid = _uploadService.UploadGpx(uploadedFile);
+            var ride = _uploadService.UploadGpx(uploadedFile);
+            var windDataTokens = _weatherService.GenerateWindDataRequestsForRide(ride);
 
             var rideReceipt = new
             {
                 success = true,
-                guid = guid,
+                guid = ride.Guid,
                 filename = uploadedFile.Filename,
-                windDataTokens = new Guid[]{Guid.NewGuid()}
+                windDataTokens = windDataTokens
             };
 
             return Json(rideReceipt);
@@ -78,10 +72,10 @@ namespace Tim.Twime.Web.Controllers
 
         public ActionResult _GetWindData(Guid id)
         {
-            var observation = _weatherServices.First().GetWeather(51.7433510, -1.2556820, DateTime.Today);
-            string status = observation == null ? "no data" : "success";
+            var windDataResult = _weatherService.GetWindData(id);
+            string status = windDataResult.Result == AssertionResult.Pass ? "success" : "unknown";
 
-            return Json(new { status = status, observation = observation}, JsonRequestBehavior.AllowGet);
+            return Json(new { status = status, observation = windDataResult.Value}, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Analysis()
@@ -89,16 +83,15 @@ namespace Tim.Twime.Web.Controllers
             return View();
         }
 
-        private void _UploadAndAnalyse(RideAnalysisInput input)
+        public ActionResult Analyse(RideAnalysisInput input)
         {
-            var uploadedFile = new UploadedFile(input.File.FileName, input.File.InputStream);
-            var guid = _uploadService.UploadGpx(uploadedFile);
-
-            var ride = _uploadService.GetRide(guid);
-            var analysisRequest = new RideAnalysisRequest(ride, new Wind(input.WindSpeedMph, input.WindBearingDegrees), input.Mass);
+            var ride = _uploadService.GetRide(input.RideId);
+            var analysisRequest = new RideAnalysisRequest(ride, new Wind(input.WindSpeed, input.WindBearing), 70);
 
             var analysis = _analysisService.Analyse(analysisRequest);
-            AnalysisStore[guid] = analysis;
+            AnalysisStore[ride.Guid] = analysis;
+
+            return RedirectToAction("Analysis");
         }
 
         public JsonResult GetAnalysis(Guid id)

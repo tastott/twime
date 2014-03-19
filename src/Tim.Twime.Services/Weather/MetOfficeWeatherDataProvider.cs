@@ -5,14 +5,16 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Net;
 
-namespace Tim.Twime.Web.Services
+namespace Tim.Twime.Services.Weather
 {
-    using Tim.Units;
+    using Models;
+    using Units;
     using DataGovUkMetOfficeWeatherService;
+    using System.Text.RegularExpressions;
 
-    public class MetOfficeWeatherService : IWeatherService
+    public class MetOfficeWeatherDataProvider : IWeatherDataProvider
     {
-        static MetOfficeWeatherService()
+        static MetOfficeWeatherDataProvider()
         {
             compassBearings = new Dictionary<string, double>();
             var directions = new string[] { "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW" };
@@ -71,13 +73,14 @@ namespace Tim.Twime.Web.Services
                 double windBearing = nearestObservation.WindDirection.Value * Math.PI / 8;
 
                 return new WeatherObservation
-                {
-                    SiteName = nearestObservation.SiteName,
-                    LatitudeDegrees = (double)nearestObservation.Latitude.Value,
-                    LongitudeDegrees = (double)nearestObservation.Longitude.Value,
-                    WindSpeedMps = Units.MphToMps((double)nearestObservation.WindSpeed.Value),
-                    WindBearingRadians = windBearing
-                };
+                (
+                    source: "Met Office",
+                    siteName: CleanSiteName(nearestObservation.SiteName),
+                    latitude: (double)nearestObservation.Latitude.Value,
+                    longitude: (double)nearestObservation.Longitude.Value,
+                    windSpeed: Units.MphToMps((double)nearestObservation.WindSpeed.Value),
+                    windBearing: windBearing
+                );
             }
         }
 
@@ -86,6 +89,18 @@ namespace Tim.Twime.Web.Services
             double distance = Tim.Geography.Geography.EarthDistanceDegrees(latitude, longitude, (double)s.Latitude.Value, (double)s.Longitude.Value);
 
             return distance;
+        }
+
+        private static string CleanSiteName(string originalName)
+        {
+            var siteIdRegex = new Regex(@"\([0-9]+\)");
+            var cleanName = siteIdRegex.Replace(originalName, "");
+
+            var wordRegex = new Regex(@"\S+");
+            MatchEvaluator properCaseEvaluator = match => match.Value.Substring(0,1).ToUpper() + match.Value.Substring(1).ToLower();
+            cleanName = wordRegex.Replace(cleanName, properCaseEvaluator);
+
+           return cleanName.Trim();
         }
     }
 }
